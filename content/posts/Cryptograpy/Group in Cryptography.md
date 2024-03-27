@@ -54,10 +54,13 @@ tags: [
      - $\forall a \ne 0$, $\exists a^{-1}$ thỏa mãn $a*a^{-1} = 1$
      - Tính phân phối của phép nhân đối với phép cộng: $a * (b+c)=(a * b)+(a * c)$
  - Trường hữu hạn là một trường có số phần tử là hữu hạn. Một trường hữu hạn thường gặp là $Z_p$ với p là số nguyên tố
-# Diffie-Hellman
+## Diffie-Hellman
  - Để giải quyết các bài trong phần này, mình sẽ giải thích tóm tắt về trao đổi khóa Diffie-Hellman.
+ 
  - Các bạn có thể đọc [Diffie-Hellman](https://vi.wikipedia.org/wiki/Trao_%C4%91%E1%BB%95i_kh%C3%B3a_Diffie-Hellman) hoặc xem [ATTT-Diffie-Hellman](https://youtu.be/D08EMFzGSfA?si=CYO8rGf6Egup6g-z) để hiểu rõ và lấy cảm hứng để giải những challenges trong phần này.
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/307801933-a2b90d7c-66e1-4aef-b2bc-1c96062568d4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085600Z&X-Amz-Expires=300&X-Amz-Signature=dce33ec51df2ecd09dc47b7c7a3ca5ba3cca4f4bc9b49a7c03dbc9c5eee2197c&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=763523386)
+
+![image](https://hackmd.io/_uploads/r13D9I7ca.png)
+
  - $Alice$ và $Bob$ thỏa thuận sử dụng chung một nhóm cyclic hữu hạn $G$ và một phần tử sinh $g$ của $G$. Phần tử sinh $g$ công khai với tất cả mọi người, kể cả kẻ tấn công. Giả sử nhóm $G$ là nhóm nhân.
      - Đầu tiên $Alice$ chọn ngẫu nhiên một số tự nhiên $a$ và gửi $g^a \ mod \ p$ cho $Bob$
      - Tiếp đó $Bob$ chọn ngẫu nhiên một số tự nhiên $b$ và gửi $g^b \ mod \ p$ cho $Alice$
@@ -66,3 +69,17 @@ tags: [
      - Khi đó $(g^b)^a = (g^a)^b$ vì nhóm $G$ có tính kết hợp, $Alice$ và $Bob$ tính được giá trị $g^{ab}$ và sử dụng nó cho khóa bí mật chung.
      - Các giá trị $a, b, g^{ab} = g^{ba} \ mod \ p$ được giữ bí mật, các giá trị $p, \ g, \ g^a \ mod \ p , \ g^b \ mod \ p$ được truyền công khai.
      - $Alice$ và $Bob$ tính được bí mật chung, cả hai có thể sử dụng nó làm khóa mã hóa chung chỉ có hai người biết để gửi dữ liệu trên kênh truyền thông mở.
+
+
+## Reference
+[1] https://vi.wikipedia.org/wiki/L%C3%BD_thuy%E1%BA%BFt_nh%C3%B3m
+
+[2] https://websitehcm.com/ly-thuyet-so-nhom-vanh-truong/
+
+[3] https://vi.wikipedia.org/wiki/Tr%C6%B0%E1%BB%9Dng_(%C4%91%E1%BA%A1i_s%E1%BB%91)
+
+[4] https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchangehttps://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
+
+[5] https://www.amazon.com/Introduction-Mathematical-Cryptography-Undergraduate-Mathematics/dp/1441926747
+
+[6] https://vi.wikipedia.org/wiki/Tr%C6%B0%E1%BB%9Dng_h%E1%BB%AFu_h%E1%BA%A1n

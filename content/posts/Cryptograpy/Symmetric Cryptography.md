@@ -13,29 +13,29 @@ tags: [
 ### Khái niệm 
  - DES(Data Encryption Standard)  là thuật toán mã hóa theo khối, nó xử lý từng khối thông tin của bản rõ có độ dài xác định là 64 bit. Trước khi đi vào 16 chu trình chính, khối dữ liệu cần bảo mật sẽ được tách ra thành từng khối 64 bit, và từng khối 64 bit này sẽ lần lượt được đưa vào 16 vòng mã hóa DES để thực hiện. Tiền thân của nó là Lucifer, một thuật toán do IBM phát triển. Cuối năm 1976, DES được chọn làm chuẩn mã hóa dữ liệu của nước Mỹ, sau đó được sử dụng rộng rãi trên toàn thế giới. DES cùng với mã hóa bất đối xứng đã mở ra một thời kỳ mới trong ngành mã hóa thông tin. Trước DES, viện nghiên cứu và sử dụng mã hóa dữ liệu chỉ giới hạn trong chính phủ và quân đội.
 
-![alt text](image.png)
+![image](https://hackmd.io/_uploads/r1BBZXOtT.png)
 
  - Đầu vào của DES là khối 64 bit, đầu ra cũng là khối 64 bit. Khóa mã hóa có độ dài 56 bit, nhưng thực chất ban đầu là 64 bit, được lấy đi các bit ở vị trí chia hết cho 8 dùng để kiểm tra tính chẵn lẻ.
 ### Cơ chế hoạt động
  
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959143-5cde3d98-ca9b-41fd-b28a-017207f27d35.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092334Z&X-Amz-Expires=300&X-Amz-Signature=b4f617ecbc521506abc61a3e01be648cf64366b59e5b10ee7b40c82d247e965b&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/BylWDQ_Kp.png)
 
 
 ##### Thuật toán sinh khóa con
  - Sơ đồ tổng quát:
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959172-37719d93-1f3d-487d-b25b-8d01f6f035a8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092348Z&X-Amz-Expires=300&X-Amz-Signature=b07e9ef99d15f8bbdad39a6b0f68cee2ca92c8c9f08ee7e57e917bc32d47a888&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/B1VZyMx5p.png)
 
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959219-6e3ed47e-2228-46cf-9825-a7de38d936fa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092400Z&X-Amz-Expires=300&X-Amz-Signature=356d45bcdf3eb32037094913245baa3d394e7a0fa3ee1f1c1a7a9c61378b2397&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/Sk_PWfe96.png)
 
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959447-18055f5d-8396-4d41-8b52-9fd379264528.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092409Z&X-Amz-Expires=300&X-Amz-Signature=f4d3eece312899c9e4d0f167403fdb3d0da2be951f5ec668ae9c0c42682fac83&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/By6_Efx5a.png)
 
 
  - Thực hiện hoán vị
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959470-11d935b3-566e-45ae-94fa-63c53d4a7a5e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092420Z&X-Amz-Expires=300&X-Amz-Signature=4344641f7def09c6138ef481b4c8937dd85c750ebe9f3aafb3d0f1626bb26adb&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/Hkr7vzg9a.png)
 
 
      - $PC1K = PC1(K)$
@@ -44,15 +44,14 @@ tags: [
      - Sau khi thực hiện $PC1$ như hình ảnh trên và bỏ các bit kiểm tra ``8, 16, 24, 32, 40, 48, 56, 64`` thì PC1K có độ dài 56 bit
  - Tính các giá trị dịch vòng $C_i, D_i$
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959542-6546c7d4-5355-4461-bb4a-49a75de8293e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092429Z&X-Amz-Expires=300&X-Amz-Signature=0acc20e73c591547b46f9313b88284de2e46e20dfa59f4d6cf35d1467b105b7a&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/Hkc1jzlqp.png)
 
      - $C_i = RotleftShift(C_{i-1}, S_i)$
      - $D_i = RotleftShift(D_{i-1}, S_i)$
      - Chúng ta có thể nhìn bảng trên để dễ hình dung.
  - Thực hiện hoán vị $PC2$ và gán khóa con $K_i$
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959625-9ff12e45-96f1-4623-aaee-179ccfc9ab44.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092441Z&X-Amz-Expires=300&X-Amz-Signature=322e2537cb724d66821ac16dc9334ea71b3f2d6c01c2c00bd5cd97a7d04b3c97&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/ByC-DMeca.png)
 
 
 
@@ -62,67 +61,53 @@ tags: [
 ##### Giai đoạn 1
  - Plaintext 64bit được đưa vào $IP$ , 1 chuỗi $C$ sẽ được tạo ra bằng cách thực hoán vị các bit của plaintext theo hoán vị $IP$ 
 
-![image](https://github.com/vanluongkma/SYMMETRIC_CRYPTOGRAPHY_AND_SYMMETRIC_CIPHERS_CRYPTOHACK/assets/127461439/aa5f4aec-e800-4442-951e-eb8b2ee01960)
+![image](https://hackmd.io/_uploads/rJ6jf1b96.png)
 
 
  - Tiếp theo $C$ sẽ được chia làm 2 phần $L_0$ (32 bit đầu) và $R_0$ ( 32 bit cuối)
    $$C \ = \ IP (plaintext) = L_0R_0$$
 ##### Giai đoạn 2
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959666-aa5f4aec-e800-4442-951e-eb8b2ee01960.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092448Z&X-Amz-Expires=300&X-Amz-Signature=b19b196ba85210d2945f7d3748bd4697edb311e936e9dfe5639c4c95a86eaf34&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/HyXvHJWca.png)
 
 
  - Lấy $R_0$ đi qua hàm  Feistel, Với giá trị đầu vào $R_{i-1}$ (32 bit), $K_i$ (48 bit)
  - $R_{i-1}$ khi đi qua hoán vị $E$ sẽ tăng độ dài từ 32 -> 48 bit để cùng độ dài và thực hiện XOR với $K_i$
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959789-0a341686-d503-4cb4-93f3-e2fa7c46b4be.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092457Z&X-Amz-Expires=300&X-Amz-Signature=62c100c64ac2c5d7d42d9d041d0813a3b7358ac6852eaba4e63ef3ef39818f82&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/HJ7Zty-qa.png)
 
 
  - Tính $E(R_i)$ ⊕ $K_i$
  - Tách kết quả của phép tính trên thành 8 khối, mỗi khối 6 bit và đưa lần lượt vào bảng $S-box$ : S1, S2, S3, S4, ..., S8.
   
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959863-a06cfb48-e859-473f-b0bb-35c02a7097a8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092507Z&X-Amz-Expires=300&X-Amz-Signature=d888a8703a906cda9ce2cced763e4ff1d1ec9fd4a84b1836577e05ae03d6f395&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959924-b1913f7a-c09f-4c7c-a6d3-e6eb84f4d7d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092517Z&X-Amz-Expires=300&X-Amz-Signature=65512f7bd794f7f5bd33e6d3cff1f0af17f8cb2350958bcba9f5cad2aa29687c&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312959969-29944dd8-0f02-463a-af4d-89222b19630a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092538Z&X-Amz-Expires=300&X-Amz-Signature=eb032c3fa0b17c6d75e5fd03f7696811d6963cedba1da1087aad9bba8b1a17e9&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
-
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960001-f4442a7a-8a15-4a95-a821-c504d83ca9bf.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092548Z&X-Amz-Expires=300&X-Amz-Signature=a8af73d7d401d4a1203068e8edd942dd2b99846e819c4f46f5272d75042f57bb&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
-
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960021-6c9aefd9-7641-4666-a183-24349f07d88f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092557Z&X-Amz-Expires=300&X-Amz-Signature=e6192ee140990dc222da2444276ce714d86f5fe5ee1df785012f6be1fc01e128&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
-
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960041-29f79bb4-8ea2-4587-a5e0-488183b56268.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092606Z&X-Amz-Expires=300&X-Amz-Signature=19169d539c0609771a04e6a442ed790049d255cde43cd58fa06b2dc3bf4a1310&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
-
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960086-486415fc-46bf-4408-bfa9-5f6d26c58922.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092616Z&X-Amz-Expires=300&X-Amz-Signature=d86fffa2476861de9e5c5911e7c2709682467d859e56b39b60fe3d5b4e82c124&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
-
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960114-a58ab206-f44e-495d-861a-1b632fe5a719.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092624Z&X-Amz-Expires=300&X-Amz-Signature=93625a70724739035e950d9635ca557900b82b224b7acaf5c1eebe7d17dcb276&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/Hk7CFkbca.png)
+  ![image](https://hackmd.io/_uploads/S1ORFk-5a.png)
+  ![image](https://hackmd.io/_uploads/rJlJ9kbcp.png)
+  ![image](https://hackmd.io/_uploads/Bkv1q1bqp.png)
+  ![image](https://hackmd.io/_uploads/rJn1c1-qa.png)
+  ![image](https://hackmd.io/_uploads/rkfl9kbcT.png)
+  ![image](https://hackmd.io/_uploads/SJsgq1bcp.png)
+  ![image](https://hackmd.io/_uploads/rkQZ5J-9T.png)
 
 
  -  Với mỗi $S-box$ sẽ có 6bit đầu vào và 4 bit đầu ra
  - Kết quả từ 8 khối 6bit sẽ cho ra 8 khối 4 bit $C_i$
   - Mỗi 4 bit đầu ra của các  $S-box$ sẽ được ghép lại, theo thứ tự các và được đem vào  $P-box$.
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960160-5553d25c-6332-48da-a6d4-881dd48a251f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092635Z&X-Amz-Expires=300&X-Amz-Signature=5f4ee553e0d0e1a34714f3f8dabca5a4441fd2cf23a24e118d6278ce68404dd6&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/SyUe3k-cT.png)
 
  - $R_i = F(R_{i-1}, K_i)$ ⊕ $L_{i-1}$ $(0 < i < 17)$
  - $L_i = R_{i-1}$
 ##### Giai đoạn 3 
  - Áp dụng hoán vị kết thúc FP cho $R_{16}L_{16}$ ta thu được bản mã $$C \ = \ FP(R_{16}L_{16})$$
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960223-26b8195b-a9ff-4fdb-ac45-9051a8769104.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092646Z&X-Amz-Expires=300&X-Amz-Signature=961a8830cfdee34dd370a2f076a1051b685de1f25f2e3acfb76c02e0b37ab496&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/Sy-66k-qa.png)
 
 
  - Quá trình giải mã của DES cũng tương tự quá trình mã hóa. Chỉ khác nhau ở: ``Li = Ri-1``. ``Ri = Li-1 ⊕  f(Ri-1, K16-i+1)``. Như vậy khóa K của hàm F sẽ đi từ khóa K16 -> K1.
 ##### Hàm Feistel(F)
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960301-cc25cbc5-e6bd-48bd-929f-2059ea5bd7c0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092655Z&X-Amz-Expires=300&X-Amz-Signature=fc7f7b69b3ef1d2f5ad36f2a64021360c7ef9f976c8782106c42f06549d1fc24&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/HyGKwQuK6.png)
 
 
  - Đầu vào hàm f có 2 biến:
@@ -148,7 +133,7 @@ E0E0E0E0  F1F1F1F1
 ## Triple DES
  - Thuật toán 3DES sử dụng một nhóm khóa bao gồm 03 khóa DES là K1, K2 và K3, mỗi khóa có giá trị 56 bít. Thuật toán mã hóa thực hiện như sau:
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960347-0aa72960-ddd8-4d03-9fc5-54e0d206c3b4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092707Z&X-Amz-Expires=300&X-Amz-Signature=7a607ab1163c9fd7347711c01233bb12c7bf89a58b96f88929d9389591d1b400&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/rJCxOXdK6.png)
 
 
 ##### Quá trình mã hóa
@@ -158,8 +143,7 @@ E0E0E0E0  F1F1F1F1
  - Trước tiên, thực hiện mã hóa DES với khóa K1, tiếp tục giải mã DES với khóa K2 và cuối cùng mã hóa DES với khóa K3 (E – Encryption: quá trình mã hóa; D - Decryption: quá trình giải mã; Bản rõ: Dữ liệu đầu vào của phép mã hóa hoặc dữ liệu đầu ra của phép giải mã; Bản mã: Dữ liệu đầu ra của phép mã hóa hoặc dữ liệu đầu vào của phép giải mã).
 ##### Quá trình giải mã
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960399-1f8c5b91-90c3-4f42-89b0-a764ec410e11.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092718Z&X-Amz-Expires=300&X-Amz-Signature=d6fcd0213326f28d16244d44c8ccc76f3d2f2012f9562effbc43333d96439ae2&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/SkCFuQuFp.png)
 
         $$Plaintext = D_{K1}(E_{K2}(D_{K3}(Ciphertext))) $$
 
@@ -252,12 +236,12 @@ FE01E01FFE01F10E 1FFEE0010EFEF101 FE1F01E0FE0E01F1
 #### Xây dựng bảng $S-box$
  - Bảng $S-box$ thuận được sinh ra bằng việc xác định nghịch đảo cho mọt giá trị nhất định trên trường $GF(2^8) = GF(2)[x]/(x^8+x^4+x^3+x+1)$.Những nghịch đảo được chuyển đôi thông qua phép biến đổi affine.
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960502-e9e61c06-5a6e-472f-9fa5-72c4d953de43.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092734Z&X-Amz-Expires=300&X-Amz-Signature=0b6e5d4f153bf0169903e50b715cd14dab7430a4d9b16e488bd3a82774d16ea7&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/HJNU-nxqp.png)
 
 
  - $S-box$ nghịch đảo chỉ đơn giản là $S-box$ chạy ngược. Nó được tính bằng phép biến đổi affine nghịch đảo các giá trị đầu vào. Phép biến đổi affine nghịch đảo được biểu diễn như sau:
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960541-711bceac-771f-4751-8882-3f89c336cb7a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092743Z&X-Amz-Expires=300&X-Amz-Signature=8750de852e2fab2b55594e0af219428b3623fc5d656b09f53012cb8d7e3ab832&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/BJDubhe5a.png)
 
 
 #### Thuật toán sinh khóa
@@ -267,23 +251,23 @@ FE01E01FFE01F10E 1FFEE0010EFEF101 FE1F01E0FE0E01F1
      - Rcon: tính giá trị Rcon(i): $Rcon(i) = x(i-1) mod (x^8+x^4+x^3+x+1)$
      - ShiftRow:
    
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960581-7c26d690-2426-4e93-bcbb-1861ff7c4049.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092757Z&X-Amz-Expires=300&X-Amz-Signature=02fa773c9c18b6c0985ee8aad5011fd8148195076d84dddbd226817025309cc4&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/S1fb72eqT.png)
 
 
 
  ### Cơ chế hoạt động
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960601-ae74ef16-3cfc-4412-b1e3-229c84fb3dd3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092806Z&X-Amz-Expires=300&X-Amz-Signature=cf2b306e5e65d4489241d89b6e802f61b26057fa0366989de48dbe7237b5a4e7&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/B1Noniec6.png)
 
 ##### SubBytes 
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960632-250d3402-6336-45a5-87cb-22ca4c33f12e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092820Z&X-Amz-Expires=300&X-Amz-Signature=ab8131bef3d4454a94823a806cad8a9d7e7733a9ec0cc17c95b3fb4ccc894088&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/S1d3gJDYT.png)
 
 
  - Từng phần tử của ma trận state được thay thế bằng giá trị tra cứu trong bảng S-BOX
 ##### ShiftRows 
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960678-dc958fb7-a825-4737-9dd8-6f1493f5b477.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092831Z&X-Amz-Expires=300&X-Amz-Signature=547e84413e7ac4d40487dfd6e737eef241fb2507b0f9e893582273020e4323aa&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/BkqTxyvtp.png)
 
 
  - Các hàng của ma trận state được dịch chuyển theo chu kỳ.
@@ -293,30 +277,27 @@ FE01E01FFE01F10E 1FFEE0010EFEF101 FE1F01E0FE0E01F1
  - Hàng cuối cùng dịch trái 3 byte
 ##### MixColumns
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960707-e6a15752-21e8-48e6-82ea-f60b2e0199a9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092849Z&X-Amz-Expires=300&X-Amz-Signature=fe937f9d69fafb1fb31fbf4a41198e84d04768e0ba95f53eaf1f9df2e886c439&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/S1xCxywKa.png)
 
 
  - Phép biến đổi MixColumns thực hiện biến đổi độc lập từng cột trong ma trận state bằng một phép nhân đa thức. Mỗi cột của state đươc coi là biểu diễn của một đa thức $f(x)\text{}$ trong $GF(2^8)\text{}$ như vậy phép biến đổi MixColumns chính là phép nhân theo modulo với $x^4+1\text{}$ với một đa thức cố định định nghĩa như sau: $$c(x) \ = \ 3x^{3} \ + \ x^{2} \ + \ x \ + \ 2 \ (modulo  \ x^{4} \ + \ 1 \ ) $$
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960737-c23fc26c-3598-4a01-9652-02ed31316753.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092859Z&X-Amz-Expires=300&X-Amz-Signature=2132b0ad891cb767055aeafafc89d3d732bc92a23b3245a9a775e6a939d54e37&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/r1_JIZKYp.png)
 
 
  - Phép nhân đa thức trên có thể biểu diễn dưới dạng phép nhân ma trận như sau
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960799-0cd4854d-36fe-427a-aa08-ea8fdd10c925.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092912Z&X-Amz-Expires=300&X-Amz-Signature=0d35e4cef9288a718719a388ac1eed6159f44d97ec6959844acbdde62daf3443&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/ryFlU-tFp.png)
 
 
  - [Rijndael MixColumns](https://en.wikipedia.org/wiki/Rijndael_MixColumns)
  - Ví dụ về phép MixColumns
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960884-69c69d8c-1063-43b3-b47d-a518b8b08308.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092924Z&X-Amz-Expires=300&X-Amz-Signature=3ef6cb3d98595ed99945bc7037ec11a852459bebf28664a03e1d8b75012e579d&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/B1DTDZKtT.png)
 
 ##### AddRoundKey
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960899-e1123f28-92dc-4eea-ad8f-ccfbae2032b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092931Z&X-Amz-Expires=300&X-Amz-Signature=7e779966ffa146774037713764bb56155376d8241c98ec751b4449dbc9a6bb0c&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/rkJJWyDYT.png)
 
  - Trong thao tác AddRoundKey, 128 bit của ma trận state sẽ được XOR với 128 bit của khóa con của từng vòng. Vì sử dụng phép XOR nên phép biến đổi ngược của AddRoundKey trong cấu trúc giải mã cũng chính là AddRoundKey. Việc kết hợp với khóa bí mật tạo ra tính làm rối (confusion) của mã hóa. Sự phức tạp của thao tác mở rộng khóa (KeySchedule) giúp gia tăng tính làm rối này
 #### Tóm tắt hoạt động
@@ -362,10 +343,9 @@ FE01E01FFE01F10E 1FFEE0010EFEF101 FE1F01E0FE0E01F1
      - Không hỗ trợ xử lý dữ liệu lớn
  - Dưới đây là mô hình mã hóa và giải mã AES-ECB:
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960953-87edaf44-8a6d-4108-9de6-79c5cd6ae924.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092944Z&X-Amz-Expires=300&X-Amz-Signature=af0b011a33bf721561051e75a660a240e8903d40a074f7d5b7200b1587897748&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/By3yZVEK6.png)
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960969-f64d3f14-c127-4698-9e10-8936eec7b4a4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T092952Z&X-Amz-Expires=300&X-Amz-Signature=f807b9628ec1fa618e5c519c612f4ecf222e5c3e4e94e24fe19aa0cc7de69a56&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/rkSeZ44F6.png)
 
 
  - Code minh họa:
@@ -425,11 +405,9 @@ print(f"{decrypt = }")
      - Không thể thực thi quá trình mã hóa song song vì xử lý của khối dữ liệu sau phụ thuộc vào ciphertext của khối dữ liệu trước, trừ lần mã hóa đầu tiên.
  - Dưới đây là mô hình mã hóa và giải mã AES-CBC
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961021-f786ff92-bc17-4ad4-ad77-1d3f5662bbbb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093003Z&X-Amz-Expires=300&X-Amz-Signature=c328b82381e7d9725a112368be3a1df29893f549925b99598f5983b652427739&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/Hk36eVNY6.png)
 
-
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961047-df4086c1-6df2-4b3d-a568-7f56bf3db894.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093010Z&X-Amz-Expires=300&X-Amz-Signature=40a9013ee2bac85709b0d44ef4a35783996bd5f651a9269ebf41da3e87d92453&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/S1oCeVVYp.png)
 
  - Code minh họa:
 ```python3
@@ -467,18 +445,15 @@ print(f"{decrypt = }")
      $$P_i = D_K(C_i)⊕P_{i-1}⊕C_{i-1}, \ P_0 ⊕ C_0 = IV $$
  - Dưới đây là mô hình mã hóa và giải mã AES-PCBC
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961097-41e11ed7-ac2e-4515-af0a-266464637d5f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093027Z&X-Amz-Expires=300&X-Amz-Signature=ac65727e327e96e8aac55315837934883cc80cd3e87ebf1b30db8c8761882b9f&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/H10RMVEYT.png)
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961115-c4daba59-9f9e-4b7a-8a98-aa71b450e84a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093034Z&X-Amz-Expires=300&X-Amz-Signature=923f3c89c737be38789af687d58a513713b0c026684abab4a457123864396b69&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/HJQJmEVYT.png)
 
 ### CFB (Cipher feedback)
  - AES CFB (Advanced Encryption Standard Cipher Feedback) là một chế độ hoạt động của thuật toán mã hóa AES (Advanced Encryption Standard). Đây là chế độ mã hóa mà ciphertext của lần mã hóa hiện tại sẽ được phản hồi (feedback) đến đầu vào của lần mã hóa tiếp theo. Nghĩa là, ciphertext của lần mã hóa hiện tại sẽ được sử dụng để tính toán ciphertext của lần mã hóa kế tiếp. Mô tả có vẻ giống CBC nhưng quá trình trực hiện lại khác.
  - Mã hóa CFB:
  
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961642-6ce23b3a-abd3-44d8-a6e2-6fd0ed691cb3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093044Z&X-Amz-Expires=300&X-Amz-Signature=271d3c7cb24ef4ceb3c662c6878dc7d9df37739516100b4741e5a539f28cf231&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
-
+![image](https://hackmd.io/_uploads/B1BgOZl5T.png)
 
 
     - Lần mã hóa đầu tiên:
@@ -501,10 +476,9 @@ print(f"{decrypt = }")
     - Không thể thực thi quá trình mã hóa song song vì xử lý của khối dữ liệu sau phụ thuộc vào ciphertext của khối dữ liệu trước, trừ lần mã hóa đầu tiên
  - Dưới đây là mô hình mã hóa và giải mã AES-CFB
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961678-efdeefb9-8021-48e6-ac9c-1ebd97083380.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093147Z&X-Amz-Expires=300&X-Amz-Signature=2fc7c7ea848c7c4b4cd8ad6f319d719e9d008401d0982d7a5ebb63dacc676745&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/HJ2eV4Et6.png)
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961700-ecd5a925-1f2d-4bd3-80c6-9ecd4726cd01.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093155Z&X-Amz-Expires=300&X-Amz-Signature=31f9d153662db2c71eccb7c4d53091869567b1490186858d79e3648f2d69d4df&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/Bkmb4NVFp.png)
 
  - Code minh họa:
 ```python3
@@ -576,10 +550,9 @@ print(f"{decrypt = }")
     - Không thể thực hiện mã hóa/giải mã song song nhiều khối dữ liệu vì lần mã hóa/giải mã sau phụ thuộc vào khối ngõ ra của lần mã hóa/giải mã liền trước nó.
  - Dưới đây là mô hình mã hóa và giải mã AES-OFB
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961770-3d66440b-4515-4f25-9b9d-84ca4ad2c1f8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093205Z&X-Amz-Expires=300&X-Amz-Signature=3441080ec9d5ce76843b53da334b67ad06f3d4b8595e6b5abc6251207878c188&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/HJi-SV4Fa.png)
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961793-83aca89e-20de-4b16-b7f1-5ef3dcbae3f2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093213Z&X-Amz-Expires=300&X-Amz-Signature=e3f9a2e79f892a57a1d39d756974b41b4056de5e1af0353bd296ae1a498a35ec&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/rkRZrNNFT.png)
 
  - Code minh họa:
 ```python3
@@ -626,9 +599,9 @@ print(f"{decrypt = }")
  - Nhược điểm: Phần cứng cần thiết kế thêm các bộ đếm counter hoặc giải thuật tạo các giá trị counter không lặp lại. 
  - Dưới đây là mô hình mã hóa và giải mã AES-CTR
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961838-e7898f59-36eb-4ff1-bd92-4be17181813b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093223Z&X-Amz-Expires=300&X-Amz-Signature=2bf100b22d9ca53455719668bc73b6f67eea4dc4fc87c8d9ab86c8422a337c74&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/rJSuUNEY6.png)
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961863-73b57344-c3a1-4883-acb5-1534634ebbdb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093230Z&X-Amz-Expires=300&X-Amz-Signature=d9fd9d32f78446ae54bed5f3da3f43eb8d938cce1c2de7100f71c8192203c2a0&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/rkiu8VEKT.png)
 
  - Code minh họa
 ```python3
@@ -663,8 +636,7 @@ print(f"{decrypt = }")
  - AES-GCM (Advanced Encryption Standard - Galois/Counter Mode) là một thuật toán mã hóa đối xứng được sử dụng để bảo vệ tính toàn vẹn và bảo mật dữ liệu trong giao tiếp trực tuyến, bao gồm các ứng dụng như TLS (Transport Layer Security) và VPN (Virtual Private Network). AES là thuật toán mã hóa đối xứng được sử dụng để mã hóa dữ liệu, trong khi GCM là một chế độ hoạt động (mode of operation) được sử dụng để bảo vệ tính toàn vẹn dữ liệu và xác thực nguồn gốc dữ liệu
  - Trong quá trình mã hóa, AES-GCM sử dụng một khóa đối xứng cùng với một nonce (number used once) và một bộ đếm (counter) để tạo ra một bản mã (ciphertext). Sau đó, GCM sử dụng một thủ tục kiểm tra tính toàn vẹn và xác thực nguồn gốc (authentication) để đảm bảo rằng dữ liệu không bị thay đổi hoặc tấn công trung gian trong quá trình truyền tải.
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312962271-3f73e036-6027-43df-b4f5-f68e1b818be4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093242Z&X-Amz-Expires=300&X-Amz-Signature=4d8717efc6cdc4581da0b1053a0a354f66cb73dd11dee7c2fc3c9e48ccec434b&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/BJKTvCoYa.png)
 
  - Hàm GHASH sử dụng trong GCM nhằm cung cấp tính xác thực cho dữ liệu 
 bảo mật. Hàm GHASH được xây dựng bởi các phép nhân trong trường $GF(2^{128})$
@@ -677,15 +649,13 @@ $$\sum^{n}_{j=1} X_j.H^{n-j+1} = X_1.H^n \oplus X_2.H^{n-1} \oplus ... \oplus X_
 trong đó, X1 ÷ Xn là các khối đầu vào 128-bit. 
  - Mặc dù việc lựa chọn tham số q (số nhánh nhân-cộng song song) không bị giới hạn nhưng để đạt được số chu kỳ đồng hồ là nhỏ và thông lượng cao thì sử dụng $q\text{}$ = $2^j\text{}$, 1 < j < [$log_2(n)\text{}$]. Đầu ra hàm GHASH(X,H) nhận được:
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312962352-c9caa997-c3da-418f-bd9c-7b164c23978d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093610Z&X-Amz-Expires=300&X-Amz-Signature=9ec0958751c10d848c2f003fae0d37a9ecb23e4eb9f434fb64975c74adb6b23c&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/rJUhORot6.png)
 
  - Trong đó, tất cả các toán hạng được thực hiện trong trường GF(2128), với đa thức : 
       $$P(x) \ = \ x^{128} \ + \ x^7 \ + \ x^2 \ + \ x \ + \ 1$$
  - Với thuật toán hàm GHASH như ở (2), số chu kỳ đồng hồ cần thiết để thực hiện sẽ là $(\frac{n}{q} + log_2(q))$. Đối với $(\frac{n}{q} - 1)$chu kỳ đầu, sẽ thực hiện các phép nhân $H^q\text{}$ trong trường $GF(2^{128})\text{}$, với $log_2(q)\text{}$ chu kỳ tiếp theo sẽ thực hiện các hàm mũ khác tương ứng và chu kỳ cuối cùng là thực hiện XOR các kết quả $\sum^{n}_{j-1} X_j.H^{n-j+1}$
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312963211-eea41c25-09be-4e69-bc06-07127aa4fc02.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T093717Z&X-Amz-Expires=300&X-Amz-Signature=1b3a28a70f75186ebb1570483e1a8d9972a3369b348574fd92e3f937aa99357c&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/ry2X5AoYp.png)
 
  - Theo (2), ta xét các trường hợp: 
      - $q = 8\text{}$ (8 nhánh nhân - cộng song song)
@@ -710,8 +680,7 @@ trong đó, X1 ÷ Xn là các khối đầu vào 128-bit.
  - Double DES:
      - Double DES là một kỹ thuật mã hóa sử dụng hai phiên bản DES trên cùng một plaintext. Trong cả hai trường hợp, nó sử dụng các khóa khác nhau để mã hóa plaintext. Cả hai khóa đều được yêu cầu tại thời điểm giải mã.Plaintext 64 bit đi vào phiên bản DES đầu tiên, sau đó được chuyển đổi thành văn bản ở giữa 64 bit bằng khóa đầu tiên và sau đó chuyển sang phiên bản DES thứ hai cung cấp ciphertext 64 bit bằng cách sử dụng khóa thứ hai.
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312963478-4874fa2c-56c5-4b16-a3f2-d76e7a83532f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T095226Z&X-Amz-Expires=300&X-Amz-Signature=2084c05802dc688d89545c218af2f6053107cdc4ca578dc20fc61205ef601b75&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/Sk-9L58F6.png)
 
      - Mỗi khóa K có độ dài 56 bit, tổng lại Double DES sử dụng khóa 112 bit nhưng mức bảo mật lại là $2^{56}\text{}$ chứ không phải $2^{112}\text{}$, và dễ bị tấn công bở meet-in-the-middle.
      - Mã hóa: Cho một bản mã P và 2 key K1, K2. ciphertext C là sản phẩm của việc mã hóa: $$C = E_{K2}(E_{K1}(P)) $$
@@ -812,7 +781,7 @@ print(flag)
  - Trong symmetric cipher, cuộc tấn công oracle đệm có thể được áp dụng cho mode AES-CBC, trong đó “oracle” (thường là máy chủ) rò rỉ dữ liệu về việc liệu phần đệm của tin nhắn được mã hóa có chính xác hay không. Dữ liệu như vậy có thể cho phép những kẻ tấn công giải mã (và đôi khi mã hóa) tin nhắn thông qua oracle bằng cách sử dụng khóa của oracle mà không cần biết khóa mã hóa.
  - Việc triển khai tiêu chuẩn của giải mã CBC trong mật mã khối là giải mã tất cả các khối bản mã, xác thực phần đệm, xóa phần đệm PKCS7 và trả về plaintext của tin nhắn. Nếu máy chủ trả về lỗi “đệm không hợp lệ” thay vì lỗi chung “giải mã không thành công”, kẻ tấn công có thể sử dụng máy chủ như một oracle đệm để giải mã (và đôi khi mã hóa) message
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312963602-053b95df-aabb-4108-adfa-0535c3eb4fa7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T095244Z&X-Amz-Expires=300&X-Amz-Signature=56125ee0d6bff3833f230ac801cce8c60e3b7f07e0f2003d912904f9dcd0254e&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/HkzJ9jPY6.png)
 
  - Ở đây tôi tìm thấy 1 tool demo [``padding oracle tool``](https://paddingoracle.github.io/) và 1 video demo cho dễ hiểu [``padding oracle video``](https://youtu.be/uDHo-UAM6_4?si=PaJ0nMGgOQoYTKQ2)
  - Giả sử attacker có block cipher $C_1 \text{}$, $C_2 \text{}$, muốn giải mã block2 để có được $P_2 \text{}$. Khi đó attacker thay đổi byte cuối cùng của $C_1 \text{}$ (tạo $C'_1 \text{}$) và gửi (IV, $C'_1 \text{}$ , $C_2 \text{}$) đến máy chủ
@@ -931,20 +900,19 @@ def send_msg(ciphertext, m0, c0):
 ```
  - Sơ đồ mã hóa
  
- ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312963822-d287ba58-8e2e-40f7-85de-a223311b27d5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T095301Z&X-Amz-Expires=300&X-Amz-Signature=4225a0314c3e18e663fb0522457f700526b7cebf1d55246f5e05bf3ab6475f0e&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+![image](https://hackmd.io/_uploads/HJbbbhvYa.png)
 
 
  - Với bài này dùng 2 IV, tôi có sơ đồ giải mã:
 
- ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312963899-c68b8837-6a6a-4a92-94ae-93624fc0bb53.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T095310Z&X-Amz-Expires=300&X-Amz-Signature=ddcebd28efc066a1ff357bd5ab17e5a3c008e1d16a7c3e72448a2241424227dd&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+ ![image](https://hackmd.io/_uploads/ryBQLnPtT.png)
 
 
  - Khi tôi ``encrypt_flag()`` thì server trả về ``m0, c0, c1`` từ đó dựa vào sơ đồ trên tôi bắt đầu với block đầu tiên với kiểu tấn công padding oracle mà tôi có đề cập ở trên.
  - Việc gửi M0 đối với block1 và pt1 sau khi tìm được đối với sơ đồ giải mã là giữ nguyên.
  - Ta chỉ quan tâm tới C0 và C1 để tấn công theo padding oracle.
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312963951-249cfbac-fa4c-4a58-9834-fbc74a4b839b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T095319Z&X-Amz-Expires=300&X-Amz-Signature=1ce270a77411f004bf5dc68d0079c8e2cb5a700e5c7422e10874353e17c5ada4&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/BJ6rkpota.png)
 
  - Nếu khi ta gửi dữ liệu vào nếu mà xuất hiện chuỗi ``Message received`` tức là khi đó phần đệm của ``c0`` đã chính xác và ta chỉ cần tìm lại 
 ```
@@ -1006,8 +974,7 @@ print("flag: " , pt1 + pt2 )
 > FLAG : crypto{h3ll0_t3l3gr4m}
 ## Key-Recovery Attacks on GCM with Repeated Nonces
 
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312964004-4c55e78c-91ef-4745-879a-710fd5d6731d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T095604Z&X-Amz-Expires=300&X-Amz-Signature=7eaa3d81ac1a5a9ad7e923f10cdb7041a14aa19585aa39cae493e231c1031f5b&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
-
+![image](https://hackmd.io/_uploads/rkfUnFTYT.png)
 
  - Các bạn có thể đọc thêm tại [475.pdf](https://eprint.iacr.org/2016/475.pdf) and [here](http://blog.redrocket.club/2018/03/27/VolgaCTF-Forbidden/)
  - Giả sử $g(X)\text{}$ là hàm $GHASH\text{}$
