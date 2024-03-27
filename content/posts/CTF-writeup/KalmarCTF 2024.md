@@ -2,9 +2,7 @@
 author: "vanluongkma"
 title: "KalmarCTF 2024"
 date: "2024-03-21"
-tags: [
-"CTF-Writeup",
-]
+tags: ["CTF-Writeup"]
 ---
 
 [!image](/content/post/DOC/hashimage1.png)

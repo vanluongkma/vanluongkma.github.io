@@ -3,7 +3,6 @@ author: "vanluongkma"
 title: "bi0sCTF 2024"
 date: "2024-02-26"
 tags: ["CTF-Writeup"]
-
 ---
 
 ## lalala

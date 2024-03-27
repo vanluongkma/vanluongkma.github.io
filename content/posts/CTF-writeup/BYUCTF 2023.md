@@ -2,21 +2,24 @@
 author: "vanluongkma"
 title: "BYUCTF 2023"
 date: "2023-06-22"
-tags: [
-"CTF-Writeup",
-]
+tags: ["CTF-Writeup"]
 ---
 
 ## Compact
 
+Challs này cho 1 file ảnh
 
-- Challs này cho 1 file ảnh
-- ![image](https://github.com/0x35p4triot/CTF-Writeups/assets/127461439/954c03f3-caef-4d8c-bb27-01e7716f6c82)
-- Nó là ``Dotsies Font`` 
-- [Tool](https://www.dcode.fr/dotsies-writing)
-- ![image](https://github.com/0x35p4triot/CTF-Writeups/assets/127461439/5da97e1e-2ed7-49b3-b3c4-c5163f10d3eb)
-- ![image](https://github.com/0x35p4triot/CTF-Writeups/assets/127461439/d0a95652-319e-4fd8-86e5-48c9caed0514)
-- Flag: ``byuctf{well its definitely more compact}``
+![image](https://github.com/0x35p4triot/CTF-Writeups/assets/127461439/954c03f3-caef-4d8c-bb27-01e7716f6c82)
+
+Nó là ``Dotsies Font`` 
+
+[Tool](https://www.dcode.fr/dotsies-writing)
+
+![image](https://github.com/0x35p4triot/CTF-Writeups/assets/127461439/5da97e1e-2ed7-49b3-b3c4-c5163f10d3eb)
+
+![image](https://github.com/0x35p4triot/CTF-Writeups/assets/127461439/d0a95652-319e-4fd8-86e5-48c9caed0514)
+
+> Flag: ``byuctf{well its definitely more compact}``
 
 ## RSA1
 ```python3
@@ -81,9 +84,12 @@ c2 = 599377359700746593451522370555094750039121373766206564497197778344656489082
 #byuctf{coprime_means_factoring_N_becomes_much_easier}
 ```
 
-- [Tool](https://www.dcode.fr/rsa-cipher)
+
+[Tool](https://www.dcode.fr/rsa-cipher)
+
 ![image](https://github.com/0x35p4triot/CTF-Writeups/assets/127461439/5074a944-d647-40dc-bf68-3b7b5728b6ac)
-- Thử với cả n1,e1,c1 or n2,e2,c2 thì đều ra flag giống nhau
+
+Thử với cả n1,e1,c1 or n2,e2,c2 thì đều ra flag giống nhau
 
 ## RSA4
 
@@ -112,8 +118,10 @@ e3 = 3
 c3 = 8177192204481601898705460379101384591996531766013815643642297541939314169289538943467463950155787562006058743758523755363825964609610993939021120980839831173842134605117089923025444468026164578567348718360392736482132312367435114106411271743218631041094275894508404221506482038656928803775293360599721583316194630449469869000491476753827928793659938654925187969087524783314008405767753004191090522037968098548258698350055999105058915648497702724525585509
 ```
 
-- Với challs này nghĩ ngay tới [``𝗛𝗮𝘀𝘁𝗮𝗱’𝘀 𝗯𝗿𝗼𝗮𝗱𝗰𝗮𝘀𝘁 𝗮𝘁𝘁𝗮𝗰𝗸 (𝗦𝗺𝗮𝗹𝗹 𝗖𝗥𝗧-𝗘𝘅𝗽𝗼𝗻𝗲𝗻𝘁)``](https://en.wikipedia.org/wiki/Coppersmith%27s_attack#H%C3%A5stad's_broadcast_attack)
-- Solution
+
+Với challs này nghĩ ngay tới [``𝗛𝗮𝘀𝘁𝗮𝗱’𝘀 𝗯𝗿𝗼𝗮𝗱𝗰𝗮𝘀𝘁 𝗮𝘁𝘁𝗮𝗰𝗸 (𝗦𝗺𝗮𝗹𝗹 𝗖𝗥𝗧-𝗘𝘅𝗽𝗼𝗻𝗲𝗻𝘁)``](https://en.wikipedia.org/wiki/Coppersmith%27s_attack#H%C3%A5stad's_broadcast_attack)
+
+Solution
 ```python
 from Crypto.Util.number import long_to_bytes
 from functools import reduce
@@ -180,7 +188,9 @@ m= (pow(c1_inv,-u) * pow(c2,v))%n
 print(long_to_bytes(m))
 # flag: byuctf{NEVER_USE_SAME_MODULUS_WITH_DIFFERENT_e_VALUES}
 ```
-- Material [``here``](https://youtu.be/EYw98NC79eI) and [``here``](https://bitsdeep.com/posts/attacking-rsa-for-fun-and-ctf-points-part-1/)
+
+Material [``here``](https://youtu.be/EYw98NC79eI) and [``here``](https://bitsdeep.com/posts/attacking-rsa-for-fun-and-ctf-points-part-1/)
+
 ```
 In this scenario, imagine that several persons are communicating over a public network. Because they didn’t want to generate a different modulus for each person, they decided that every person will have the same modulus.
 Each user i will have a unique public key (N, e_i) and unique private key (N, d_i).

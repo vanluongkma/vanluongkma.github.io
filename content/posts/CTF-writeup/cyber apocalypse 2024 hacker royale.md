@@ -2,9 +2,7 @@
 author: "vanluongkma"
 title: "Cyber apocalypse 2024 hacker royale"
 date: "2024-03-17"
-tags: [
-"CTF-Writeup",
-]
+tags: ["CTF-Writeup"]
 ---
 
 
@@ -38,8 +36,10 @@ with open('output.txt', 'w') as f:
 # Make sure you wrap the decrypted text with the HTB flag format :-]
 # DJF_CTA_SWYH_NPDKK_MBZ_QPHTIGPMZY_KRZSQE?!_ZL_CN_PGLIMCU_YU_KJODME_RYGZXL
 ```
- - With this challenge, each character of the flag turns into a number. If flag[i] is not a character, print it. If it is a character, print $(m - 0x41 +i) \ mod \ 26 + 0x41$
-  - Solution with python language
+
+With this challenge, each character of the flag turns into a number. If flag[i] is not a character, print it. If it is a character, print $(m - 0x41 +i) \ mod \ 26 + 0x41$
+
+Solution with python language
 ```python3
 from random import randint
 
@@ -80,8 +80,10 @@ print(new_flag)
 
 # !?}De!e3d_5n_nipaOw_3eTR3bt4{_THB
 ```
- - The flag has the format ``HTB{`` so restoring the flag is very simple
- - Solution with python language
+
+The flag has the format ``HTB{`` so restoring the flag is very simple
+
+Solution with python language
 
 ```python3
 msg = "!?}De!e3d_5n_nipaOw_3eTR3bt4{_THB"
@@ -95,8 +97,11 @@ for i in range(0, len(msg), 3):
 
 print(flag)
 ```
+
 > FLAG : HTB{4_b3tTeR_w3apOn_i5_n3edeD!?!}
+
 ## Primary Knowledge
+
 ```python3
 import math
 from Crypto.Util.number import getPrime, bytes_to_long
@@ -118,9 +123,11 @@ with open('output.txt', 'w') as f:
 # c = 15114190905253542247495696649766224943647565245575793033722173362381895081574269185793855569028304967185492350704248662115269163914175084627211079781200695659317523835901228170250632843476020488370822347715086086989906717932813405479321939826364601353394090531331666739056025477042690259429336665430591623215
 
 ```
- - With this challenge we have ``n = math.prod([getPrime(1024) for _ in range(2**0)])`` as a 1024bit prime number $\implies$ private key $d = e^{-1} \ mod \ (n-1)$
 
- - Solution with python language
+With this challenge we have ``n = math.prod([getPrime(1024) for _ in range(2**0)])`` as a 1024bit prime number $\implies$ private key $d = e^{-1} \ mod \ (n-1)$
+
+
+Solution with python language
 
 ```python3
 from Crypto.Util.number import *
@@ -135,6 +142,7 @@ print(flag)
 ```
 
 > FLAG : HTB{0h_d4mn_4ny7h1ng_r41s3d_t0_0_1s_1!!!}
+
 ## Iced TEA
 ```python3
 import os
@@ -207,9 +215,12 @@ if __name__ == '__main__':
 #Key : 850c1413787c389e0b34437a6828a1b2
 #Ciphertext : b36c62d96d9daaa90634242e1e6c76556d020de35f7a3b248ed71351cc3f3da97d4d8fd0ebc5c06a655eb57f2b250dcb2b39c8b2000297f635ce4a44110ec66596c50624d6ab582b2fd92228a21ad9eece4729e589aba644393f57736a0b870308ff00d778214f238056b8cf5721a843
 ```
- - This challenge we just need to rewrite the ``encrypt()`` and ``encrypt_block()`` functions to recover the flag.
- - The challenge has 2 options AES-ECB and AES-CBC. Since there is no IV, it is encrypted to mode AES-ECB
- - Solution with python language
+
+This challenge we just need to rewrite the ``encrypt()`` and ``encrypt_block()`` functions to recover the flag.
+
+The challenge has 2 options AES-ECB and AES-CBC. Since there is no IV, it is encrypted to mode AES-ECB
+
+Solution with python language
 ```python3
 import os
 from pwn import *
@@ -278,6 +289,7 @@ if __name__ == '__main__':
 ```
 
 > FLAG : HTB{th1s_1s_th3_t1ny_3ncryp710n_4lg0r1thm_____y0u_m1ght_h4v3_4lr34dy_s7umbl3d_up0n_1t_1f_y0u_d0_r3v3rs1ng}
+
 ## Blunt
 ```python3
 from Crypto.Cipher import AES
@@ -324,9 +336,12 @@ print(f'ciphertext = {encrypted}')
 # B = 0xc4a21ba9
 # ciphertext = b'\x94\x99\x01\xd1\xad\x95\xe0\x13\xb3\xacZj{\x97|z\x1a(&\xe8\x01\xe4Y\x08\xc4\xbeN\xcd\xb2*\xe6{'
 ```
- - with this challenge, flag are  encrypted by mode AES-CBC with ``iv = b'\xc1V2\xe7\xed\xc7@8\xf9\\\xef\x80\xd7\x80L*'`` and $key = C = A^b \ mod \ p = B^a \ mod \ p$
- - I use DLP to find again a or b and get flag.
- - Solution with python language
+
+With this challenge, flag are  encrypted by mode AES-CBC with ``iv = b'\xc1V2\xe7\xed\xc7@8\xf9\\\xef\x80\xd7\x80L*'`` and $key = C = A^b \ mod \ p = B^a \ mod \ p$
+
+I use DLP to find again a or b and get flag.
+
+Solution with python language
 
 ```python3
 from Crypto.Cipher import AES
@@ -362,6 +377,7 @@ print(f'found = {fl}')
 ```
 
 > FLAG : HTB{y0u_n3ed_a_b1gGeR_w3ap0n!!}
+
 ## Arranged
 ```python3
 from Crypto.Cipher import AES
@@ -392,13 +408,18 @@ print(encrypted)
 # (4226762176873291628054959228555764767094892520498623417484902164747532571129516149589498324130156426781285021938363575037142149243496535991590582169062734 : 425803237362195796450773819823046131597391930883675502922975433050925120921590881749610863732987162129269250945941632435026800264517318677407220354869865 : 1)
 # b'V\x1b\xc6&\x04Z\xb0c\xec\x1a\tn\xd9\xa6(\xc1\xe1\xc5I\xf5\x1c\xd3\xa7\xdd\xa0\x84j\x9bob\x9d"\xd8\xf7\x98?^\x9dA{\xde\x08\x8f\x84i\xbf\x1f\xab'
 ```
- - Challenge provide point a, A, B, G in GF(p) and secret : FLAG, b, priv_a, priv_b , p
- - We need to find again p : $$y^2 = x^3 + 726x + b$$ $$Gx^3 + 726Gx + b = Gy^2 + k1p \ \ \  (1)$$ $$Ax^3 + 726Ax + b = Ay^2 + k2p \ \ \ (2)$$ $$Bx^3 + 726Bx + b = By^2 + k3p \ \ \  (3)$$
- - Get (1)-(2) and (1)-(3): $$p1 = Gx^3 - Ax^3 + 726(Gx-Ax) - Gy^2 + Ay^2$$ $$p2 = Gx^3 - Bx^3 + 726(Gx-Bx) - Gy^2 + By^2$$
+
+Challenge provide point a, A, B, G in GF(p) and secret : FLAG, b, priv_a, priv_b , p
+
+We need to find again p : $$y^2 = x^3 + 726x + b$$ $$Gx^3 + 726Gx + b = Gy^2 + k1p \ \ \  (1)$$ $$Ax^3 + 726Ax + b = Ay^2 + k2p \ \ \ (2)$$ $$Bx^3 + 726Bx + b = By^2 + k3p \ \ \  (3)$$
+
+Get (1)-(2) and (1)-(3): $$p1 = Gx^3 - Ax^3 + 726(Gx-Ax) - Gy^2 + Ay^2$$ $$p2 = Gx^3 - Bx^3 + 726(Gx-Bx) - Gy^2 + By^2$$
 
  $\implies$ $$p = GCD(p1, p2) \ mod p$$
- - I use ECDLP to find priv_a or priv_b with **A = G * priv_a** and **B = G * priv_b**
- - Solution with python language
+
+I use ECDLP to find priv_a or priv_b with **A = G * priv_a** and **B = G * priv_b**
+
+Solution with python language
 
 ```python3
 from sympy.ntheory.residue_ntheory import discrete_log
@@ -483,11 +504,15 @@ with open('output.txt', 'w') as f:
 # p = 151441473357136152985216980397525591305875094288738820699069271674022167902643
 # q = 15624342005774166525024608067426557093567392652723175301615422384508274269305
 ```
- - To summarize the problem, we have this is RSA with PKCS1 padding encryption with e = 65537 and we have the leak : **p = cipher.key.p)[::2]**, **q = cipher.key.q)[1::2]**
+
+To summarize the problem, we have this is RSA with PKCS1 padding encryption with e = 65537 and we have the leak : **p = cipher.key.p)[::2]**, **q = cipher.key.q)[1::2]**
  
- ![image](https://github.com/vanluongkma/CTF-Writeups/assets/127461439/e2f5a66f-15de-4b8a-bbee-6fd6242ad20d)
- - After google,  I found [**partial known bits**](https://eprint.iacr.org/2020/1506.pdf) and [**branch and prune attack**](https://github.com/jvdsn/crypto-attacks/blob/master/attacks/factorization/branch_and_prune.py)
- - Solution with python language
+ 
+![image](https://github.com/vanluongkma/CTF-Writeups/assets/127461439/e2f5a66f-15de-4b8a-bbee-6fd6242ad20d)
+
+After google,  I found [**partial known bits**](https://eprint.iacr.org/2020/1506.pdf) and [**branch and prune attack**](https://github.com/jvdsn/crypto-attacks/blob/master/attacks/factorization/branch_and_prune.py)
+
+Solution with python language
 ```python3
 from math import sqrt
 from Crypto.PublicKey import RSA
@@ -530,6 +555,7 @@ key = RSA.construct((n, e, d))
 flag = PKCS1_OAEP.new(key).decrypt(ct)
 print(flag)
 ```
+
 > FLAG : HTB{v3r1fy1ng_pr1m3s_m0dul0_p0w3rs_0f_10!}
 
 ## Permuted
@@ -589,7 +615,9 @@ encrypted = cipher.encrypt(pad(FLAG, 16))
 print('c =', encrypted)
 
 ```
- - With this challenge, we still need to find the ``key`` again, specifically find ``priv_a`` or ``priv_b``. Reading the source, I know the math operations in this ``Permuted group``. Besides, through testing many times, I realized that the elements in this ``Permuted group`` all have their own commutation rounds, ``(order)``.
+
+With this challenge, we still need to find the ``key`` again, specifically find ``priv_a`` or ``priv_b``. Reading the source, I know the math operations in this ``Permuted group``. Besides, through testing many times, I realized that the elements in this ``Permuted group`` all have their own commutation rounds, ``(order)``.
+
 ```python3
  class Permutation:
     def __init__(self, mapping):
@@ -619,7 +647,10 @@ print('c =', encrypted)
     def identity(length):
         return Permutation(range(length))
 ```
- - Here we see it is a very simple DLP problem. Since sage has a convenient implementation of permutations for us, we shall use it to solve for ``priv_a`` and ``priv_b``.  First we check the order of ``g`` and see if it is smooth
+
+
+Here we see it is a very simple DLP problem. Since sage has a convenient implementation of permutations for us, we shall use it to solve for ``priv_a`` and ``priv_b``.  First we check the order of ``g`` and see if it is smooth
+
 ```python3
 from data import g, A, B
 from sage.all import*
@@ -635,7 +666,9 @@ print(factor(g.order()))
  
  $$order(g) = 2^2 * 3^3 * 5^2 * 7 * 11 * 13 * 23^2 * 47 * 53 * 101 * 149 * 163 * 379$$
  
- - we see that the primes are extremely small, hence we can use Pohlig Hellman to solve this quite quickly.
+
+We see that the primes are extremely small, hence we can use Pohlig Hellman to solve this quite quickly.
+
 ```python3
 from data import g, A, B
 from sage.all import*
@@ -669,8 +702,11 @@ print(f"{b = }")
 # a = 839949590738986464
 # b = 828039274502849303
 ```
- - When we have ``priv_a`` and ``priv_b``, we just need to put it in the ``Permutationx class`` and get the flag 
- - Solution with python language
+
+When we have ``priv_a`` and ``priv_b``, we just need to put it in the ``Permutationx class`` and get the flag 
+
+Solution with python language
+
 ```python3
 from Crypto.Util.number import *
 from Crypto.Util.Padding import unpad
@@ -743,9 +779,12 @@ flag = unpad(cipher.decrypt(enc), 16).decode()
 print(flag)
 ```
 > FLAG : HTB{w3lL_n0T_aLl_gRoUpS_aRe_eQUaL_!!}
- - Reference :
-    - [**Permutation Grey CTF 2022**](https://ariana1729.github.io/writeups/2022/GreyCTF/Permutation/2022-06-10-Permutation.html)
-    - [**Cryptanalysis of a Proposal Based on the Discrete Logarithm Problem Inside Sn**](https://www.researchgate.net/publication/326514386_Cryptanalysis_of_a_Proposal_Based_on_the_Discrete_Logarithm_Problem_Inside_Sn)
+
+Reference :
+
+[**Permutation Grey CTF 2022**](https://ariana1729.github.io/writeups/2022/GreyCTF/Permutation/2022-06-10-Permutation.html)
+
+[**Cryptanalysis of a Proposal Based on the Discrete Logarithm Problem Inside Sn**](https://www.researchgate.net/publication/326514386_Cryptanalysis_of_a_Proposal_Based_on_the_Discrete_Logarithm_Problem_Inside_Sn)
 ## Tsayaki
 ```python3
 from tea import Cipher as TEA
@@ -799,17 +838,20 @@ if __name__ == '__main__':
     run()
 
 ```
- - Challenge use source chall ``Iced Ted``
- - With encrypt flag mode AES-CBC because ``IV`` has been added.
- - Looking at the source code, we see that IV is kept intact. With ``AES-CBC`` mode, recovering IV is very simple
 
-  ![image](https://github.com/vanluongkma/SYMMETRIC_CRYPTOGRAPHY_AND_SYMMETRIC_CIPHERS_CRYPTOHACK/assets/127461439/87edaf44-8a6d-4108-9de6-79c5cd6ae924)
+Challenge use source chall ``Iced Ted``
 
-  ![image](https://github.com/vanluongkma/SYMMETRIC_CRYPTOGRAPHY_AND_SYMMETRIC_CIPHERS_CRYPTOHACK/assets/127461439/f786ff92-bc17-4ad4-ad77-1d3f5662bbbb)
+With encrypt flag mode AES-CBC because ``IV`` has been added.
 
-  ![image](https://github.com/vanluongkma/SYMMETRIC_CRYPTOGRAPHY_AND_SYMMETRIC_CIPHERS_CRYPTOHACK/assets/127461439/df4086c1-6df2-4b3d-a568-7f56bf3db894)
+Looking at the source code, we see that IV is kept intact. With ``AES-CBC`` mode, recovering IV is very simple
+
+![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312960953-87edaf44-8a6d-4108-9de6-79c5cd6ae924.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T074656Z&X-Amz-Expires=300&X-Amz-Signature=1fdcfb65e72123d4471988600ff46d94941b1166bfbf9affcee3333b32a50857&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+
+![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961021-f786ff92-bc17-4ad4-ad77-1d3f5662bbbb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T074727Z&X-Amz-Expires=300&X-Amz-Signature=91049e12309b338ea575da9b469ed21970ea282bc68b2f36e0a29f2ad79eb831&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
+
+![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312961047-df4086c1-6df2-4b3d-a568-7f56bf3db894.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T074742Z&X-Amz-Expires=300&X-Amz-Signature=4404ed7a4a79b1ae8bbf99462885cc26f240ea0805f0c61340bd96275ee0bbb4&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699665799)
  
- - Source to find IV
+Source to find IV
 
 ```python3
 from tea import Cipher as TEA
@@ -854,8 +896,11 @@ iv = xor(dec_msg[:8], sm[:8])
 print(iv)
 # b'\r\xdd\xd2w<\xf4\xb9\x08'
 ```
- - Having recovered the IV successfully, we move on to the next stage of the challenge. We have to submit four distinct keys $k_0, k_1, k_2, k_3$ such that: $$ct = E_{k_0}(M) = E_{k_1}(M) = E_{k_2}(M) = E_{k_3}(M)$$
-  - let's take a look at the TEA encrypt_block:
+
+Having recovered the IV successfully, we move on to the next stage of the challenge. We have to submit four distinct keys $k_0, k_1, k_2, k_3$ such that: $$ct = E_{k_0}(M) = E_{k_1}(M) = E_{k_2}(M) = E_{k_3}(M)$$
+
+Let's take a look at the TEA encrypt_block:
+
 ```python3
 def encrypt_block(self, msg):
     m0 = b2l(msg[:4])
@@ -873,7 +918,8 @@ def encrypt_block(self, msg):
     m = ((m0 << (self.BLOCK_SIZE//2)) + m1) & ((1 << self.BLOCK_SIZE) - 1) # m = m0 || m1
     return l2b(m)
 ```
- - Next we will be asked to know about [**Equivalent keys**](https://www.tayloredge.com/reference/Mathematics/VRAndem.pdf) 
+
+Next we will be asked to know about [**Equivalent keys**](https://www.tayloredge.com/reference/Mathematics/VRAndem.pdf) 
 ```
 h = 0x80000000
 
@@ -882,7 +928,9 @@ K1 = k0 + k1 + xor(k2, h) + xor(k3, h)
 K2 = xor(k0, h) + xor(k1, h) + k2 + k3
 K3 = xor(k0, h) + xor(k1, h) + xor(k2, h) + xor(k3, h)
 ```
- - Example
+
+Example
+
 ```python3
 def keys(key: bytes):
     h = 0x80000000
@@ -913,7 +961,9 @@ for round in range(10):
 [b'8888888888888888', b'88888888\xb8888\xb8888', b'\xb8888\xb888888888888', b'\xb8888\xb8888\xb8888\xb8888']
 [b'9999999999999999', b'99999999\xb9999\xb9999', b'\xb9999\xb999999999999', b'\xb9999\xb9999\xb9999\xb9999']
 ```
- - Solution with python language
+
+Solution with python language
+
 ```python3
 from tea import Cipher as TEA
 from pwn import process, remote, xor
@@ -949,7 +999,9 @@ for round in range(10):
         break
 f.interactive()
 ```
+
 > FLAG : HTB{th1s_4tt4ck_m4k3s_T34_1n4ppr0pr14t3_f0r_h4sh1ng!}
+
 ## ROT128
 
 ```python3

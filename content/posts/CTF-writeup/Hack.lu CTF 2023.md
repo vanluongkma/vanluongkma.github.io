@@ -2,15 +2,14 @@
 author: "vanluongkma"
 title: "Hack.lu CTF 2023"
 date: "2023-10-17"
-tags: [
-"CTF-Writeup",
-]
+tags: ["CTF-Writeup"]
 ---
 
 ## Lucky Numbers
-![image](https://github.com/vanluongkma/CTF-Writeups/assets/127461439/f024527b-f93d-4b22-bac1-b7298154a3fa)
+![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/315314705-f024527b-f93d-4b22-bac1-b7298154a3fa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T075026Z&X-Amz-Expires=300&X-Amz-Signature=2083d649925b8b004fefa158eb817ab402f2c2605d8625a0cfc1ef85190b20e1&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=635265812)
 
- - https://flu.xxx/challenges/15
+https://flu.xxx/challenges/15
+
 ```python3
 #!/usr/bin/env python
 #hacklu23 Baby Crypyo Challenge
@@ -95,20 +94,27 @@ if __name__ == "__main__":
 ```
 ### Solution
 
- - Tôi chú ý đến ``data2`` và ``data3``
+
+Tôi chú ý đến ``data2`` và ``data3``
+
 ```python3
         print("You know the moment when you have this special number that gives you luck? Great cause I forgot mine")
         data2=input()
         print("I also had a second lucky number, but for some reason I don't remember it either :(")
         data3=input()
 ```
-- Để qua được 3 điều kiện if thì
+
+Để qua được 3 điều kiện if thì
+
 ```
 t <= 42
 20000 <= s <= 150000000000
 ```
-- Tiếp đó dể ``sent = True`` thì ``isPrime(n=2**t-1) = True``
-- Và qua vòng for cuối thì ``number=(2**u)*(2**(t)-1)`` Là số hoàn hảo (u = t-1) nghĩa là t cũng phải là số nguyên tố
+
+Tiếp đó dể ``sent = True`` thì ``isPrime(n=2**t-1) = True``
+
+Và qua vòng for cuối thì ``number=(2**u)*(2**(t)-1)`` Là số hoàn hảo (u = t-1) nghĩa là t cũng phải là số nguyên tố
+
 ```python3
 from pwn import *
 from math import *
@@ -135,4 +141,5 @@ f.sendlineafter(b"I also had a second lucky number, but for some reason I don't 
 
 f.recvline()
 ```
+
 > FLAG : flag{luck_0n_fr1d4y_th3_13th?}

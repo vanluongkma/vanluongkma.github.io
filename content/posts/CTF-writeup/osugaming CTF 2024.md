@@ -2,21 +2,23 @@
 author: "vanluongkma"
 title: "osugaming CTF 2024"
 date: "2024-03-07"
-tags: [
-"CTF-Writeup"
-]
+tags: ["CTF-Writeup"]
 ---
 
- - I solved $\frac{6}{8}$ challenge crypto [osu!gaming CTF 2024](https://ctf.osugaming.lol/)
+ 
+I solved $\frac{6}{8}$ challenge crypto [osu!gaming CTF 2024](https://ctf.osugaming.lol/)
 
 ## crypto/ROSSAU
 
 ```
 My friend really likes sending me hidden messages, something about a public key with n = 5912718291679762008847883587848216166109 and e = 876603837240112836821145245971528442417. What is the name of player with the user ID of the private key exponent? (Wrap with osu{})
 ```
- - Challenge này yêu cầu ta tính private key **d**
- - Thoáng qua ta thấy e ở đây rất lớn tôi dùng [``wiener attack``](https://en.wikipedia.org/wiki/Wiener%27s_attack)
- - Solution bằng python
+
+Challenge này yêu cầu ta tính private key **d**
+
+Thoáng qua ta thấy e ở đây rất lớn tôi dùng [``wiener attack``](https://en.wikipedia.org/wiki/Wiener%27s_attack)
+
+Solution bằng python
 ```python3
 import RSA_owiener
 from Crypto.Util.number import*
@@ -31,7 +33,8 @@ else:
     print(f"{d = }")
 # 124493
  ```
- - Khi có private key **d** thì flag chính là tên người dùng trên [osu](https://osu.ppy.sh/) có ID là 124493
+
+Khi có private key **d** thì flag chính là tên người dùng trên [osu](https://osu.ppy.sh/) có ID là 124493
 
 ![image](https://github.com/luongdv35/CTF-Writeups/assets/127461439/0ada5e6a-c752-410a-97ab-f55ab656b64f)
 
@@ -61,8 +64,10 @@ encoded_string = encode_base_727(flag)
 print(binascii.hexlify(encoded_string.encode()))
 # 06c3abc49dc4b443ca9d65c8b0c386c4b0c99fc798c2bdc5bccb94c68c37c296ca9ac29ac790c4af7bc585c59d
 ```
- - Như tiêu đề của challenge, bài này mã hóa rất đơn giản ta chỉ cần đảo ngược lại quá trình mã hóa là sẽ lấy được flag.
- - Solution bằng python
+
+Như tiêu đề của challenge, bài này mã hóa rất đơn giản ta chỉ cần đảo ngược lại quá trình mã hóa là sẽ lấy được flag.
+
+Solution bằng python
 ```python3
 import binascii
 
@@ -130,7 +135,9 @@ for _ in range(1000):
 		print(flag)
 		break
 ```
- - Challenge này ta chú ý đoạn điều kiện để server trả về flag
+
+Challenge này ta chú ý đoạn điều kiện để server trả về flag
+
 ```python3
 	for i in range(32):
 		if mask[i] == '1':
@@ -147,11 +154,16 @@ for _ in range(1000):
 		print(flag)
 		break
 ```
- - Tôi thấy nếu ở chỗ input ``x = int(input('Pick a random r, give me x = r^2 (mod n): '))``
- - Ví dụ nếu n = 5 ta có $5^2  mod  5  = 0$
- - Tương tự đó ở ``y = int(input('Now give me r*product of IDs with mask applied: '))`` hay ``if pow(y, 2, n) == val:`` thì ta chỉ cần nhập tương tự như kia
- - Tức là bài này ta chỉ cần nhập x = y = n là là ``correct``
- - Solution chạy bằng lúa
+
+Tôi thấy nếu ở chỗ input ``x = int(input('Pick a random r, give me x = r^2 (mod n): '))``
+
+Ví dụ nếu n = 5 ta có $5^2  mod  5  = 0$
+
+Tương tự đó ở ``y = int(input('Now give me r*product of IDs with mask applied: '))`` hay ``if pow(y, 2, n) == val:`` thì ta chỉ cần nhập tương tự như kia
+
+Tức là bài này ta chỉ cần nhập x = y = n là là ``correct``
+
+Solution chạy bằng lúa
 ```sage
 patriot@Nitro:/mnt/c/Users/piroxxx/Downloads$ nc chal.osugaming.lol 7275
 proof of work:
@@ -258,13 +270,16 @@ def main():
 
 main()
 ```
- - Sau khi đọc đoạn code tôi cần phải bypass qua điều kiện
+
+Sau khi đọc đoạn code tôi cần phải bypass qua điều kiện
 
 ![image](https://github.com/luongdv35/CTF-Writeups/assets/127461439/e692c10c-bdc3-48f0-b81d-eec2475675d1)
 
- - Tôi đã tìm [``Lenth extension attack``](https://en.wikipedia.org/wiki/Length_extension_attack) để giải quyết nó
 
- - Solution demo
+Tôi đã tìm [``Lenth extension attack``](https://en.wikipedia.org/wiki/Length_extension_attack) để giải quyết nó
+
+
+Solution demo
 
 ```
 patriot@Nitro:~$ nc chal.osugaming.lol 9727
@@ -327,10 +342,14 @@ n = 2160489795493918825870689458820648828073650907916827108594219132976202835249
 e = 65537
 ciphertext = 2087465275374927411696643073934443161977332564784688452208874207586196343901447373283939960111955963073429256266959192725814591103495590654238320816453299972810032321690243148092328690893438620034168359613530005646388116690482999620292746246472545500537029353066218068261278475470490922381998208396008297649151265515949490058859271855915806534872788601506545082508028917211992107642670108678400276555889198472686479168292281830557272701569298806067439923555717602352224216701010790924698838402522493324695403237985441044135894549709670322380450
 ```
- - Chall này ta chỉ cần chú ý ở hàm ``getWYSIprime()`` 2 só nguyên tố p và q được cấu tạo từ **2, 7**
- - Ý tưởng bài này mình chỉ cần recover lại 2 số **p, q**
 
- - Solution bằng python
+Chall này ta chỉ cần chú ý ở hàm ``getWYSIprime()`` 2 só nguyên tố p và q được cấu tạo từ **2, 7**
+
+Ý tưởng bài này mình chỉ cần recover lại 2 số **p, q**
+
+
+Solution bằng python
+
 ```python3
 from Crypto.Util.number import *
 
@@ -368,17 +387,24 @@ while True:
 
 ![image](https://github.com/luongdv35/CTF-Writeups/assets/127461439/91ef3525-9b6f-47b2-8fda-52000003c427)
 
- - Thấy rằng, challenge cho 1 file [``Alfakyun. - KING.osz``](https://ctf.osugaming.lol/uploads/2cdc85778a40b176f4541bc782650cf933dd9997083d69e928cd9b4b85e0c189/Alfakyun.%20-%20KING.osz)
- - Khi mở ra thì ta thấy nó là 1 file game của osugaming, file game
- - Nhưng chúng tôi đã cẩn thận hơn sử dụng $binwalk$ để tìm các file ẳn trong đó
 
- ![image](https://github.com/luongdv35/CTF-Writeups/assets/127461439/346ead55-b5d7-4d58-9367-37c0ca6b476a)
+Thấy rằng, challenge cho 1 file [``Alfakyun. - KING.osz``](https://ctf.osugaming.lol/uploads/2cdc85778a40b176f4541bc782650cf933dd9997083d69e928cd9b4b85e0c189/Alfakyun.%20-%20KING.osz)
 
- - Khi đó chúng tôi tiến hành convert **Alfakyun. - KING.osz** **=>** **Alfakyun. - KING.zip**
+Khi mở ra thì ta thấy nó là 1 file game của osugaming, file game
+
+Nhưng chúng tôi đã cẩn thận hơn sử dụng $binwalk$ để tìm các file ẳn trong đó
+
+ 
+![image](https://github.com/luongdv35/CTF-Writeups/assets/127461439/346ead55-b5d7-4d58-9367-37c0ca6b476a)
+
+
+Khi đó chúng tôi tiến hành convert **Alfakyun. - KING.osz** **=>** **Alfakyun. - KING.zip**
 
 ![image](https://github.com/luongdv35/CTF-Writeups/assets/127461439/f2d7abf4-5904-4ff9-a983-f16fd0c29c17)
 
- - Mở file python **enc.py** tôi nghi ngờ flag được giấu trong đó
+
+Mở file python **enc.py** tôi nghi ngờ flag được giấu trong đó
+
 ```python3
 import os
 
@@ -393,8 +419,10 @@ with open("flag.osu.enc", 'wb') as f:
     f.write(encrypted_data)
 ```
 
- - Đây chỉ là phép xor bình thường
- - Tôi giải mã file như sau
+
+Đây chỉ là phép xor bình thường
+
+Tôi giải mã file như sau
 ```python3
 from pwn import xor
 data = b"osu file format v14"
@@ -407,16 +435,22 @@ x = bytes([enc[i] ^ key[i % len(key)] for i in range(len(enc))])
 
 print(x.hex())
 ```
- - Sau khi decrypt ra tôi thấy một đem so sánh với file ``Alfakyun. - KING (QuintecX) [ryuk eyeka's easy].osu``
- - File gốc:
 
-   ![image](https://github.com/luongdv35/CTF-Writeups/assets/127461439/2820a2fd-ff81-47b5-b276-817168640524)
+Sau khi decrypt ra tôi thấy một đem so sánh với file ``Alfakyun. - KING (QuintecX) [ryuk eyeka's easy].osu``
+
+File gốc:
+
+![image](https://github.com/luongdv35/CTF-Writeups/assets/127461439/2820a2fd-ff81-47b5-b276-817168640524)
  
- - File sau khi decrypt
+
+File sau khi decrypt
  
-   ![image](https://github.com/luongdv35/CTF-Writeups/assets/127461439/c19b8b9c-2031-4522-852f-ad4baf6835d5)
+![image](https://github.com/luongdv35/CTF-Writeups/assets/127461439/c19b8b9c-2031-4522-852f-ad4baf6835d5)
 
-- Tôi tiến hành copy file sau khi decrypt và thay file cho file ``Alfakyun. - KING (QuintecX) [ryuk eyeka's easy].osu`` và đổi đuôi folder thành ``.osz``
 
-- Khi mở và chơi game ta sẽ có flag
+Tôi tiến hành copy file sau khi decrypt và thay file cho file ``Alfakyun. - KING (QuintecX) [ryuk eyeka's easy].osu`` và đổi đuôi folder thành ``.osz``
+
+
+Khi mở và chơi game ta sẽ có flag
+
 > osu{xor_xor_xor_by_frums}
