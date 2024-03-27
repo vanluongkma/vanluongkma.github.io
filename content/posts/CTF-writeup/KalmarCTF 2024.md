@@ -7,6 +7,8 @@ tags: [
 ]
 ---
 
+[!image](/content/post/DOC/hashimage1.png)
+
 ## Cracking The Casino
 **casino.py**
 ```python3
