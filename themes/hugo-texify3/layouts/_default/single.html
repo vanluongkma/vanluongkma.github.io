@@ -1,0 +1,110 @@
+{{ define "head" }}
+{{ $options := dict "transpiler" "dartsass" "targetPath" "css/single.css" }}
+{{ with resources.Get "sass/layouts/single.scss" | toCSS $options | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+{{ with resources.Get "sass/layouts/sharingbuttons.scss" | toCSS $options | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+{{ end }}
+
+{{ define "main" }}
+<main id="main" class="post">
+  {{ if ne .Section "posts"}}
+  <article class="content {{ if .Site.Params.numberedSubtitles }}numbered-subtitles{{ end }}">
+    {{ .Content }}
+  </article>
+
+  {{ else }}
+  <div class="post-heading">
+    <h1 class="post-title">{{ .Title }}</h1>
+    <div class="publish-metadata">
+      {{/*  publish date  */}}
+      <svg width="0.75em" height="0.75em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      {{ .PublishDate.Format .Site.Params.dateFormat }}
+      {{/*  word count  */}}
+      {{ if .Site.Params.showWordCount }}
+        &nbsp;
+        <span>
+          <svg width="0.75em" height="0.75em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.4998 5.49994L18.3282 8.32837M3 20.9997L3.04745 20.6675C3.21536 19.4922 3.29932 18.9045 3.49029 18.3558C3.65975 17.8689 3.89124 17.4059 4.17906 16.9783C4.50341 16.4963 4.92319 16.0765 5.76274 15.237L17.4107 3.58896C18.1918 2.80791 19.4581 2.80791 20.2392 3.58896C21.0202 4.37001 21.0202 5.63634 20.2392 6.41739L8.37744 18.2791C7.61579 19.0408 7.23497 19.4216 6.8012 19.7244C6.41618 19.9932 6.00093 20.2159 5.56398 20.3879C5.07171 20.5817 4.54375 20.6882 3.48793 20.9012L3 20.9997Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          {{ .WordCount }} words
+        </span>
+      {{ end }}
+      {{/*  reading time  */}}
+      {{ if gt .ReadingTime 1 }}
+        {{ .Scratch.Set "timeUnit" "mins" }}
+      {{ else }}
+        {{ .Scratch.Set "timeUnit" "min" }}
+      {{ end }}
+      {{ if .Site.Params.showReadingTime }}
+        &nbsp;
+        <span>
+          <svg width="0.75em" height="0.75em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 7V12L14.5 13.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          ~{{.ReadingTime}} {{ .Scratch.Get "timeUnit" }}
+        </span>
+      {{ end }}
+    </div>
+  </div>
+
+  {{ if ne .Params.tags nil }}
+  <div>
+    {{ range .Params.tags }}
+    <a class="link tag" href='{{ "tags" | absURL }}/{{ . | urlize }}'>#{{ . }}</a>
+    {{ end }}
+    <br></br>
+  </div>
+  {{ end }}
+  {{ if cond (ne .Params.toc nil) .Params.toc .Site.Params.toc }}
+  {{ if ne .TableOfContents "<nav id=\"TableOfContents\"></nav>" }}
+  <details>
+    <summary>
+      <b>Table of Contents</b>
+    </summary>
+    <div class="toc {{ if .Site.Params.numberedSubtitles }}numbered-subtitles{{ end }}">{{ .TableOfContents }}</div>
+  </details>
+  {{ end }}
+  {{ end }}
+  <article class="content {{ if .Site.Params.numberedSubtitles }}numbered-subtitles{{ end }}">
+    {{ if .Site.Params.emphasisWithDots }}
+    {{ .Content | replaceRE "<strong>(\\p{Han}+?)</strong>" "<strong class=chinese>$1</strong>" | safeHTML }}
+    {{ else }}
+    {{ .Content }}
+    {{ end }}
+  </article>
+
+  <button onclick="topFunction()" id="back-to-top" title="Go to top">Back to Top</button>
+
+  {{ partial "sharingbuttons.html" . }}
+  <div class="paginator">
+    {{ if .PrevInSection }}
+    <a class="link" href="{{ .PrevInSection.Permalink }}" title="{{ .PrevInSection.Title }}">← prev</a>
+    {{ else }}
+    <a></a>
+    {{ end }}
+    {{ if .NextInSection }}
+    <a class="link" href="{{ .NextInSection.Permalink }}" title="{{ .NextInSection.Title }}">next →</a>
+    {{ else }}
+    <a></a>
+    {{ end }}
+  </div>
+  <div class="comment">
+    <!-- disqus -->
+    {{ template "_internal/disqus.html" . }}
+    <!-- generic engine -->
+    {{ .Site.Params.commentEngine.code | safeHTML }}
+  </div>
+  {{ end }}
+  {{ if .Page.Store.Get "hasMermaid" }}
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+{{ end }}
+</main>
+{{ end }}

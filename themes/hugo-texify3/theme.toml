@@ -1,0 +1,20 @@
+name = "TeXify3"
+license = "MIT"
+licenselink = "https://github.com/michaelneuper/hugo-texify3/blob/master/LICENSE"
+description = "A latex-style hugo theme with the gruvbox color scheme for personal blogging"
+
+homepage = "https://github.com/michaelneuper/hugo-texify3"
+
+demosite = "https://michaelneuper.github.io/hugo-texify3/"
+
+tags = ["blog", "clean", "latex", "light", "minimal", "responsive", "simple"]
+features = ["blog", "postcss", "comments", "google analytics"]
+
+[author]
+    name = "Michael Neuper"
+    homepage = "https://michaelneuper.com"
+
+[original]
+    author = "Pavel Sapezhka"
+    repo = "https://github.com/weastur/hugo-texify2"
+    

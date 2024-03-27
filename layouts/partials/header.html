@@ -1,0 +1,20 @@
+{{ $parsedUrl := urls.Parse .Site.BaseURL }}
+{{ $domain := $parsedUrl.Host }}
+{{ $domainWithoutWWW := replace $domain "www." "" }}
+<header id="header">
+  <h1>
+    <a href="{{ .Site.BaseURL }}">{{ .Site.Params.title | default .Site.Title }}</a>
+  </h1>
+
+  <nav>
+    {{ range .Site.Menus.main }}
+    <span class="nav-bar-item">
+      {{ if .Pre }}
+        <span class="icon">{{ .Pre | safeHTML }}</span>
+      {{ end }}
+      <a class="link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+    </span>
+    {{ end }}
+  </nav>
+</header>
+<hr class="head-rule"></hr>

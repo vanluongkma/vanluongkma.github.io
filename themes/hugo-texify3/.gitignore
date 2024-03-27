@@ -1,0 +1,10 @@
+/public/
+/resources/_gen/
+/exampleSite/resources/_gen/
+/node_modules/
+/exampleSite/node_modules/
+/assets/jsconfig.json
+hugo_stats.json
+.hugo_build.lock
+/exampleSite/.hugo_build.lock
+.DS_Store

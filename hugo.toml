@@ -1,0 +1,65 @@
+baseURL = "https://michaelneuper.github.io/"
+disqusShortname = ""
+enableGitInfo = true
+enableRobotsTXT = true
+hasCJKLanguage = true
+languageCode = "en"
+paginate = 5
+rssLimit = 10
+theme = "hugo-texify3"
+title = ""
+
+[author]
+name = "Michael Neuper"
+email = "michael@michaelneuper.com"
+
+[taxonomies]
+tags = "tags"
+categories = "categories"
+
+[params]
+title=""
+description = "Discipline is a bridge between goals and accomplishment."
+footnote = """
+Powered by  <a class=link href=https://gohugo.io target=_blank rel=noopener>Hugo</a> | 
+Theme <a class=link href=https://github.com/michaelneuper/hugo-texify3 target=_blank rel=noopener>TeXify3</a>
+"""
+customCSS = []
+customJS = []
+dateFormat = "2 January 2006"
+emphasisWithDots = true
+toc = true
+rootFontSize = "105%"
+math = true
+enableDuckDuckGoSearchBox = true
+numberedSubtitles = true
+
+  [params.commentEngine]
+  code = """
+  <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/hugo-texify3"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme=""
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  """
+
+#  [params.sharingbuttons]
+#  facebook = true
+#  twitter = true
+#  email = true
+#  linkedin = true
+#  reddit = true
+#  whatsapp = true
+#  hackernews = true
+#  telegram = true
