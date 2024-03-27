@@ -8,7 +8,9 @@ tags: [
 ---
 
 ## Limited 1
+
 ``chal_time.py``
+
 ```python3
 import time
 import random
@@ -19,18 +21,41 @@ if __name__ == '__main__':
     correct = [189, 24, 103, 164, 36, 233, 227, 172, 244, 213, 61, 62, 84, 124, 242, 100, 22, 94, 108, 230, 24, 190, 23, 228, 24]
     time_cycle = int(time.time()) % 256
     if len(flag) != len(correct):
-        print('Nope :(')
+        print('Nope :('))
         sys.exit(1)
     for i in range(len(flag)):
         random.seed(i+time_cycle)
         if correct[i] != flag[i] ^ random.getrandbits(8):
-            print('Nope :(')
+            print('Nope :('))
             sys.exit(1)
     print(flag)
 ```
 
+This challenge **time_cycle = int(time.time()) % 256 < 256** and **flag = correct ^ random.getrandbits**
+
+Solution with python language
+
+```python3
+import time
+import random
+import sys
+
+for t in range(256):
+    if __name__ == '__main__':
+        correct = [189, 24, 103, 164, 36, 233, 227, 172, 244, 213, 61, 62, 84, 124, 242, 100, 22, 94, 108, 230, 24, 190, 23, 228, 24]
+        flag = ""
+        for i in range(len(correct)):
+            random.seed(i+t)
+            flag+=chr(correct[i]^random.getrandbits(8))
+        if "ctf{" in flag:
+            print(flag)
+            break
+```
+
 ## Limited 2
+
 ``NY_chal_time.py``
+
 ```python3
 import time
 import random
@@ -40,26 +65,53 @@ if __name__ == '__main__':
     flag = input("Flag? > ").encode('utf-8')
     correct = [192, 123, 40, 205, 152, 229, 188, 64, 42, 166, 126, 125, 13, 187, 91]
     if len(flag) != len(correct):
-        print('Nope :(')
+        print('Nope :('))
         sys.exit(1)
     if time.gmtime().tm_year >= 2024 or time.gmtime().tm_year < 2023:
-        print('Nope :(')
+        print('Nope :('))
         sys.exit(1)
     if time.gmtime().tm_yday != 365 and time.gmtime().tm_yday != 366:
-        print('Nope :(')
+        print('Nope :('))
         sys.exit(1)    
     for i in range(len(flag)):
         # Totally not right now
         time_current = int(time.time())
         random.seed(i+time_current)
         if correct[i] != flag[i] ^ random.getrandbits(8):
-            print('Nope :(')
+            print('Nope :('))
             sys.exit(1)
         time.sleep(random.randint(1, 60))
     print(flag)
 ```
+
+We will see **time_current = int(time.time())** is a quite large number, and **tm_year = 2023** , **tm_yday = 365 or 366**, I bruteforce and get flag.
+
+```python3
+import datetime
+import random
+
+start = datetime.datetime(2023, 12, 29, 0, 0, 0, tzinfo=datetime.timezone.utc)
+end = datetime.datetime(2024, 1, 2, 0, 0, 0, tzinfo=datetime.timezone.utc)
+
+for t in range(int(start.timestamp()), int(end.timestamp())):
+    if __name__ == '__main__':
+        correct = [192, 123, 40, 205, 152, 229, 188, 64, 42, 166, 126, 125, 13, 187, 91]
+        flag = ""
+        for i in range(len(correct)):
+            random.seed(i+t)
+            flag+=chr(correct[i]^random.getrandbits(8))
+            t = t + (random.randint(1, 60))
+        print(t)
+        if "wctf{" in flag:
+            print("flag found: " + flag)
+            break
+```
+
+> FLAG : wctf{b4ll_dr0p}
 ## Blocked 1
+
 ``server.py``
+
 ```python3
 
 """
@@ -135,7 +187,9 @@ def main():
 main()
 ```
 ## Blocked 2
+
 ``server.py``
+
 ```python3
 import random
 import secrets
@@ -194,7 +248,9 @@ def main():
 main()
 ```
 ## TagSeries 1
+
 ``chal.py``
+
 ```python3
 import sys
 import os
@@ -240,7 +296,9 @@ if __name__ == "__main__":
 
 ```
 ## TagSeries 2
+
 ``chal.py``
+
 ```python3
 import sys
 import os
@@ -287,7 +345,9 @@ if __name__ == "__main__":
 ```
 
 ## TagSeries 3
+
 ``chal.py``
+
 ```python3
 import sys
 import os
