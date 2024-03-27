@@ -112,8 +112,105 @@ def audit():
 if __name__ == "__main__":
     audit()
 ```
- - Analysis source code
- 
+
+Analysis source code
+
+Function **gen()** will produce an output of 3 number $q, g, h$
+
+```python3
+def gen():
+    q = getStrongPrime(1024)
+    
+    g = randint(1,q-1)
+    s = randint(1,q-1)
+    h = pow(g,s,q)
+
+    return q,g,h
+```
+
+Function **debug_test** will produce 1 number dbg radom [0, 2**32 - 2]
+
+ ```python3
+ def debug_test(pk):
+    dbg = randint(0,2**32-2)
+    comm, r = commit(pk,dbg)
+    return comm, dbg, r
+```
+
+Function **commit()** will produce number $$comm = ((g^{dbg} \ mod \ q) * (h^r \ mod \ q)) mod \ q$$
+
+
+```python3
+def commit(pk, m):
+    q, g, h = pk
+    r = randint(1,q-1)
+
+    comm = pow(g,m,q) * pow(h,r,q)
+    comm %= q
+
+    return comm,r
+```
+
+With function **main()** we must to send guess so that $$comm = ((g^{guess} \ mod \ q) * (h^r \ mod \ q)) mod \ q$$
+
+and correct 100 times
+
+```python3
+for _ in range(1337):
+    if correct == 100:
+        print("Oh wow, you broke my casino??!? Thanks so much for finding this before launch so i don't lose all my money to cheaters!")
+        flag = b"Kalmar{First_Crypto_Down!}"
+        print(f"here's that flag you wanted, you earned it! {flag}")
+        exit()
+    comm, v, r = game(pk)
+    print(f'Commitment: {comm}')
+    g = input(f'Are you able to guess the value? [Y]es/[N]o')
+    if g.lower() == "n":
+        print(f'commited value was {v}')
+        print(f'randomness used was {r}')
+        print(f'verifies = {verif(pk,comm,v,r)}')
+    elif g.lower() == "y":
+        guess = input(f'whats your guess?')
+        if verif(pk, comm, guess, r):
+            correct += 1
+            print("Oh wow! well done!")
+        else:
+            print("That's not right... Why are you wasting my time if you haven't broken anything?")
+            exit()
+```
+
+We have $dbg \in [0, 2**32-2]$ and send input 1337 times, I use module [Rancrack](https://github.com/tna0y/Python-random-module-cracker) or [MT19937 PRNG](https://github.com/kmyk/mersenne-twister-predictor) to solve this problem.
+
+Solution with python language
+
+```python3
+from pwn import *
+from mt19937predictor import MT19937Predictor
+
+# f = process(["python3", "casino.py"])
+f = remote("chal-kalmarc.tf", 9)
+f.sendline(b"\n")
+
+MT = MT19937Predictor()
+
+for i in range(624):
+	f.sendlineafter(b"[Y]es/[N]o", b"N")
+	f.recvuntil(b"commited value was ")
+	res = int(f.recvline())
+	f.recvuntil(b"\n")
+	MT.setrandbits(res, 32)
+
+for i in range(100):
+	f.sendlineafter(b"[Y]es/[N]o", b"Y")
+	ans = MT.randint(0, 2**32 - 2)
+	f.sendline(str(ans).encode())
+
+f.interactive()
+```
+
+We can run it locally to speed up this challenge
+
+> FLAG : Kalmar{First_Crypto_Down!}
 **Pedersen_commitments.py**
 
 ```python3
