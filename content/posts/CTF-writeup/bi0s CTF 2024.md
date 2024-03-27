@@ -30,14 +30,19 @@ for _ in range(100):
 print(f"{p = }")
 print(f"{output = }")
 ```
- - Bài này flag được ẩn trong **unknowns** bao gồm 10 giá trị với 100 vòng for :
- - Ta hãy để ý
+
+Bài này flag được ẩn trong **unknowns** bao gồm 10 giá trị với 100 vòng for :
+
+Ta hãy để ý
 ```python3
 output.append(sum([a + unknowns[b]^2 * unknowns[c]^3 for a, b, c in zip(aa, bb, cc)]) % p)
 ```
- - Ở vòng for đầu tiên ta sẽ có  coefficient $coeff_i$  là: $coeff_0 * unknown_{b0}^2 * unknown_{c0}^3 + coeff_0 * unknown_{b1}^2 * unknown_{c1}^3 + coeff_0 * unknown_{b2}^2 * unknown_{c2}^3 + ... + coeff_0 * unknown_{b9}^2 * unknown_{c9}^3 + sum(aa_0) = output_0 $
- - Với $b, c \in [0,9]$
- - Ta sẽ dựng ma trận như sau:
+
+Ở vòng for đầu tiên ta sẽ có  coefficient $coeff_i$  là: $coeff_0 * unknown_{b0}^2 * unknown_{c0}^3 + coeff_0 * unknown_{b1}^2 * unknown_{c1}^3 + coeff_0 * unknown_{b2}^2 * unknown_{c2}^3 + ... + coeff_0 * unknown_{b9}^2 * unknown_{c9}^3 + sum(aa_0) = output_0 $
+
+Với $b, c \in [0,9]$
+
+Ta sẽ dựng ma trận như sau:
 
 
 $$
@@ -58,9 +63,12 @@ $$
 \end{equation*}
 $$
 
- - Giải ma trận bằng sage ta thu được 100 nghiệm của  $unknown_0^2 * unknown_0^3$ đến $unknown_9^2 * unknown_9^3$
- - Thu được 10 giá trị của $unknown_0^5$ đến $unknown_9^5$ ta chỉ cần  căn bậc 5 của $unknown$ và chia dư cho 1000 để khôi phục lại flag.
- - Solution bằng python
+
+Giải ma trận bằng sage ta thu được 100 nghiệm của  $unknown_0^2 * unknown_0^3$ đến $unknown_9^2 * unknown_9^3$
+
+Thu được 10 giá trị của $unknown_0^5$ đến $unknown_9^5$ ta chỉ cần  căn bậc 5 của $unknown$ và chia dư cho 1000 để khôi phục lại flag.
+
+Solution bằng python
 ```python3
 from sage.all import *
 
@@ -109,6 +117,7 @@ for i in range(100):
             print(flag)
 print("".join([bytes([c]).decode() for c in flag]))
 ```
+
 ## Challengename
 ```python3
 from ecdsa.ecdsa import Public_key, Private_key
@@ -176,9 +185,12 @@ for _ in '01':
         print("No hex?")
         exit()
 ```
- - Chall này tôi nhận được 2 điểm từ đường cong: Public key là **dG** và Encrypt flag là **dF**
- - Từ 2 điểm trên ta có $$y_1^2 = x_1^3 + ax_1 + b$$ $$y_2^2 = x_2^3 + ax_2 + b$$ $$(y_1^2 - y_2^2) - (x_1^3 - x_2^3) = a(x_1-x_2)$$
- - Ta có a, b được tính bằng
+
+Chall này tôi nhận được 2 điểm từ đường cong: Public key là **dG** và Encrypt flag là **dF**
+
+Từ 2 điểm trên ta có $$y_1^2 = x_1^3 + ax_1 + b$$ $$y_2^2 = x_2^3 + ax_2 + b$$ $$(y_1^2 - y_2^2) - (x_1^3 - x_2^3) = a(x_1-x_2)$$
+
+Ta có a, b được tính bằng
 ```sage
 sage: p = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff
 ....: x1 = 5683931425003308547431366441507256115275884385439908235960128031931809224426
@@ -192,7 +204,8 @@ sage: p = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff
  41058363725152142129326129780047268409114441015993725554835256314039467401291)
 sage:
 ```
- - Ta có curve của bài
+
+Ta có curve của bài
 ```sage
 sage: p = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff
 ....: a = 115792089210356248762697446949407573530086143415290314195533631308867097853948
@@ -202,11 +215,17 @@ sage: p = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff
 115792089210356248762697446949407573529996955224135760342422259061068512044369
 sage:
 ```
- - Ở đây hàm **bigsur** trông rất dài nhưng thực chất nó là phép xor. Nếu chúng ta chọ **nonce1 = b"\x00"** và **nonce2 = b"\x00\x00"** thì sẽ có thể lấy cùng một **nunce** trong hàm **sign()** mà server ký message
- - Để tìm lại private key **d** tôi sử dụng [️ECDSA Nonce Reuse Attack](https://crypto.stackexchange.com/questions/71764/is-it-safe-to-reuse-a-ecdsa-nonce-for-two-signatures-if-the-public-keys-are-diff)
- - Chúng ta có **r1 = r2 = R**, **(r1, s1)** là chữ ký của $m_1$, **(r2, s2)** là chữ ký của $m_2$ khi đó chúng ta có $$s_1 * k - H(m_1) = s_2 * H(m_2) = R * privatekey$$ $$k = \frac{s_1 - s_2}{(H(m_1) - H(m_2)}$$ $$privatekey = \frac{s_1 * k - H(m_1)}{R}$$
- - Khi có **privatekey** ta dễ dàng tìm lại **F** bằng phép tính $F = private^-1 * Q$
- - Solution bằng sage
+
+Ở đây hàm **bigsur** trông rất dài nhưng thực chất nó là phép xor. Nếu chúng ta chọ **nonce1 = b"\x00"** và **nonce2 = b"\x00\x00"** thì sẽ có thể lấy cùng một **nunce** trong hàm **sign()** mà server ký message
+
+Để tìm lại private key **d** tôi sử dụng [️ECDSA Nonce Reuse Attack](https://crypto.stackexchange.com/questions/71764/is-it-safe-to-reuse-a-ecdsa-nonce-for-two-signatures-if-the-public-keys-are-diff)
+
+Chúng ta có **r1 = r2 = R**, **(r1, s1)** là chữ ký của $m_1$, **(r2, s2)** là chữ ký của $m_2$ khi đó chúng ta có $$s_1 * k - H(m_1) = s_2 * H(m_2) = R * privatekey$$ $$k = \frac{s_1 - s_2}{(H(m_1) - H(m_2)}$$ $$privatekey = \frac{s_1 * k - H(m_1)}{R}$$
+
+Khi có **privatekey** ta dễ dàng tìm lại **F** bằng phép tính $F = private^
+{-1} * Q$
+
+Solution bằng sage
 ```python3
 from hashlib import md5
 from Crypto.Util.number import *
@@ -268,7 +287,8 @@ Q = E(x2, y2)
 F = d_inverse*Q
 print(long_to_bytes(int(F[0])))
 ```
-> FLAG : bi0sctf{https://bit.ly/3I0zwtG}
+
+
 ## rr
 ```python3
 from Crypto.Util.number import *
@@ -286,7 +306,8 @@ print(f"{ks = }")
 print(f"{c1 = }")
 print(f"{c2 = }")
 ```
- - Challenge cho chúng ta 2 bản mã $c_1, c_2$ của **flag**
+
+Challenge cho chúng ta 2 bản mã $c_1, c_2$ của **flag**
 
 $$
 \begin{cases}
@@ -295,7 +316,8 @@ $$
 \end{cases}
 $$
 
- - Những hệ số $k_1, k_2, k_3, ... , k_{20}$ đã biết, chúng ta cần xây dựng đa thức $$f(x) = (\sum_{i=1}^{20} k_i x^i)^{127} - c_1$$ $$g(x) = x^{65537} - c_2$$
+
+Những hệ số $k_1, k_2, k_3, ... , k_{20}$ đã biết, chúng ta cần xây dựng đa thức $$f(x) = (\sum_{i=1}^{20} k_i x^i)^{127} - c_1$$ $$g(x) = x^{65537} - c_2$$
  
 ## daisy_bel
 ```python3
@@ -319,12 +341,21 @@ p>>545 = 91400841044972721356487922142842424929135116616908204025717322520930098
 pow(q, -1, p) % 2**955 = 233711553660002890828408402929574055694919789676036615130193612611783600781851865414087175789069599573385415793271613481055557735270487304894489126945877209821010875514064660591650207399293638328583774864637538897214896592130226433845320032466980448406433179399820207629371214346685408858
 """
 ```
- - Với bài này ta có $$u=q^{-1} mod p$$ $$uq = 1 + kp$$ $$uq^2 = q + kpq$$ $$uq^2 - q = 0 mod n$$
- - Chúng ta có 545 high bits của p ($p_h$) và 955 low bits của $q^{-1} mod p$ ($q_l^{-1}$)
- - Từ thông tin trên chúng ta có $f(x,y) = (u_h * 2^{955} + u_l) * (q_h * 2^{545} + q_l)^2 - (q_h * 2^{545} + q_l) = 0 \ mod \ n$
- - Chúng ta sẽ sử dụng thuật toán coppersmith để tìm ($q_l, u_h$)
- - Ở đây ta sẽ dùng [**coppersmith multivariate heuristic**](https://github.com/kionactf/coppersmith/blob/main/coppersmith_multivariate_heuristic.py) để giải quyết bài toán này.
- - Solution bằng sage
+
+
+Với bài này ta có $$u=q^{-1} mod p$$ $$uq = 1 + kp$$ $$uq^2 = q + kpq$$ $$uq^2 - q = 0 mod n$$
+
+
+Chúng ta có 545 high bits của p ($p_h$) và 955 low bits của $q^{-1} mod p$ ($q_l^{-1}$)
+
+
+Từ thông tin trên chúng ta có $f(x,y) = (u_h * 2^{955} + u_l) * (q_h * 2^{545} + q_l)^2 - (q_h * 2^{545} + q_l) = 0 \ mod \ n$
+
+Chúng ta sẽ sử dụng thuật toán coppersmith để tìm ($q_l, u_h$)
+
+Ở đây ta sẽ dùng [**coppersmith multivariate heuristic**](https://github.com/kionactf/coppersmith/blob/main/coppersmith_multivariate_heuristic.py) để giải quyết bài toán này.
+
+Solution bằng sage
 ```python3
 from coppersmith_multivariate_heuristic import coppersmith_multivariate_heuristic
 from lll import *
