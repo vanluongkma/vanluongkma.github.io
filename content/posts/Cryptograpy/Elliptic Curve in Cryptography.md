@@ -13,10 +13,10 @@ tags: [
  - Trên trường $F$ biểu diễn bằng phương trình Weiretrass: $$y + a_1xy + a_3y = x^3 + a_2x^2 + a_4x + a_6$$
  - Xét đường cong $E$ trên trường nguyên tố hữu hạn $F_p$ (p nguyên tố, p > 3) với công thức biến đổi sau: $$Y^2 = X^3 + aX + b$$
  - Định nghĩa: Giả sử $K$ là một trường có đặc số khác 2 và khác 3 và xét đa thức $X^3+ aX + b$ (với $a, b  \in K$). Khi đó đường con elliptic trên trường $K : Y^2 = X^3 + aX + b$ là tập hợp tất cả các điểm $(x, y)$ với $x,y \in K$ sao cho $Y^2 = X^3 + aX + b$ không có các nghiệm bội tức là $4a^3 + 27b^2 \ne 0 \ (mod \ p)$ cùng với phần tử $O$ - điểm $O$ này được gọi là $điểm \ vô \ hạn$
- - ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/4edef6c2-23ea-42c9-be6c-d3bf75de3985)
+ - ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/308165623-4edef6c2-23ea-42c9-be6c-d3bf75de3985.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085016Z&X-Amz-Expires=300&X-Amz-Signature=2cb259154485007a719d331297b5947a8cb755d7e5f7cbce8f5f2dd2f01a7c44&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=764059033)
 
  - 2 ví dụ về đường cong elliptic
- - ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/33285655-ebba-42b4-9fef-f703e11f5441)
+ - ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/308165682-33285655-ebba-42b4-9fef-f703e11f5441.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085036Z&X-Amz-Expires=300&X-Amz-Signature=7dc41ee1c9eefa22b452b771fb8c663ce2325f4c9976a15881e778ba1272dcaa&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=764059033)
 
  - Trong không gian 3d thì đường cong Elliptic trông như sau:
  - 
@@ -26,14 +26,14 @@ tags: [
      - Nếu hai điểm $P_1(x_1 + y_1)$ và $P_2(x_2 + y_2)$ với $x_1 \ne x_2$ nằm trên đường cùng một đường cong Elliptic $E$ thì đường thẳng đi qua 2 điểm $P_1$ và $P_2$ sẽ cắt một điểm duy nhât $P_3(x_3, y_3)$ có thể xác định thông qua $P_1$ và $P_2$ nằm trên đường cong $E$
      - Tiếp tuyến của đường cong tại điểm bất kỳ $P(x, y)$ trên đường cong $E$ cũng cất đường cong $E$ tại một điểm duy nhất nằm trên đường $E$, điểm này cũng có thể xác định được thông qua $P$.
 ### Đường cong Elliptic trên trường hữu hạn
- - Xét trường hữu han $F_q$ của $q = p^r$ phần tử trên trường hữu hạn $K$. Giả sửu $E$ là đường cong E được định nghĩa trên $F_q$.Nếu đặc số của trường $p=2$ hoặc $p=3$ thì $E$ được cho bởi phương trình ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/0515fab3-7299-4cef-8c78-08241f86c7bf)
+ - Xét trường hữu han $F_q$ của $q = p^r$ phần tử trên trường hữu hạn $K$. Giả sửu $E$ là đường cong E được định nghĩa trên $F_q$.Nếu đặc số của trường $p=2$ hoặc $p=3$ thì $E$ được cho bởi phương trình ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/308165817-0515fab3-7299-4cef-8c78-08241f86c7bf.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085058Z&X-Amz-Expires=300&X-Amz-Signature=c4f37e6d53c0d2903fb9effcb425e06cfc852f6adb2f158a983a38d8b582504c&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=764059033)
  và ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/9ba118fe-5816-4e75-a2d4-c3b5774c6f6a)
 
  - Dễ dàng thấy một đường cong như vậy có thể có nhiều nhất là $2p+1$ điểm trong $F_p$, nghĩa là điểm vô cùng với $2q$ cặp (x, y) trong đó $x, y \ \in F_q$, tức là mỗi q giá trị x có thể tồn tại nhiều nhất 2 giá trị y thỏa mãn $Y^2 = X^3 + aX + b$. Nhưng vì chỉ có một nửa các phần của $F_q^*$ có căn bậc 2 người ta kì vọng chỉ có khoảng một nửa số các điểm của $F_q$
- - Ví dụ : Nếu $q = p$ là 1 số nguyên tố thì $λ(x) = (x / p)$ là kí hiệu Legedre Symbol. Do đó trong tất cả mọi trường hợp số các nghiệm $y \in F_q$ thảo mãn phương trình $y^2=u$ là bằng $1+ λ(u)$. Vì vậy số các nghiệm ở phương trình 1 và điểm vô hạn là: ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/697769ca-5a38-4478-b4a5-1bfdc12ac924)
+ - Ví dụ : Nếu $q = p$ là 1 số nguyên tố thì $λ(x) = (x / p)$ là kí hiệu Legedre Symbol. Do đó trong tất cả mọi trường hợp số các nghiệm $y \in F_q$ thảo mãn phương trình $y^2=u$ là bằng $1+ λ(u)$. Vì vậy số các nghiệm ở phương trình 1 và điểm vô hạn là: ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/308165949-697769ca-5a38-4478-b4a5-1bfdc12ac924.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085141Z&X-Amz-Expires=300&X-Amz-Signature=f76d01215263cc81f76bb17230dab7f0d03d8fc3d670aa960803412c7ccfaa85&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=764059033)
 
  - Giả sử $λ(x^3 + ax + b) = +-1$
- - Lấy tổng ngẫu nhiên ta thấy rằng ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/74db9f9f-0713-46a6-bddc-bd7c03265eef) bị chặn bở $2 \sqrt q$ đó chính là định lý Hasses được phát triển như sau:
+ - Lấy tổng ngẫu nhiên ta thấy rằng ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/308165989-74db9f9f-0713-46a6-bddc-bd7c03265eef.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085156Z&X-Amz-Expires=300&X-Amz-Signature=7712dff8c35bf4d03813f2a6be827c9c1e7f0507d2fbdced24aa509fa2d3299c&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=764059033) bị chặn bở $2 \sqrt q$ đó chính là định lý Hasses được phát triển như sau:
  - Gọi $N$ là số các điểm trên đường cong elliptic được định nghĩa trên trường $F_q$. Khi đó $|N-(q+1)| \ =< \ 2 \sqrt q$
 ### Các phép toán trên đường cong Elliptic
 #### Phép cộng trên đường cong Elliptic
@@ -45,11 +45,11 @@ tags: [
  - Vẽ đường thẳng nối 2 điểm P và Q, đường thẳng này sẽ cắt đường cong tại một điểm nữa
  - Lấy đối xứng của điểm này qua trục hoành, ta sẽ có được P+Q
  - Hình dưới mô tả phép cộng được tiến hành trong đường cong Elliptic:
- - ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/c1a86771-26a2-4594-a5a5-8df1222614cb)
+ - ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/308166138-c1a86771-26a2-4594-a5a5-8df1222614cb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085215Z&X-Amz-Expires=300&X-Amz-Signature=d810daeeb2a0fe8cb2e9d04b29478a37a5dea6247b76d9202aa2934cbae48cd7&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=764059033)
 
  - Nếu 3 điểm trên đường cong Elliptic là thẳng hàng, thì tổng của chúng bằng 0
  - Các tính chất của phép cộng trên E:
- - ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/7283c636-dff5-40ee-a834-942d249a3a5a)
+ - ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/308166175-7283c636-dff5-40ee-a834-942d249a3a5a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085224Z&X-Amz-Expires=300&X-Amz-Signature=97f687dc9529d32ebbd111af37855124a5ee2fbf418be671b7fb38ae838199b3&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=764059033)
 
      - $P + O = O + P = P,  \forall P \in E$
      - $P + (−P) = O, \forall P \in E$
@@ -74,7 +74,7 @@ tags: [
  - Theo cách cộng ở bên trên, ta vẽ đường thẳng nối $P$ và $P$, ở đây chính là tiếp tuyến của đường cong, nó cắt đường cong tại điểm $-2P$, lấy đối xứng qua trục hoành ta có $2P$.
  - Tiếp tục vẽ đường thẳng nối giữa $2P$ và $P$, cắt đường cong tại $-3P$, lấy đối xứng ta có $3P$.
  - Dưới đây là hình mô tả phép nhân trong đường cong Elliptic
- - ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/6a4a2dcd-bc92-47aa-9fe0-4aab511cb8a8)
+ - ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/308166242-6a4a2dcd-bc92-47aa-9fe0-4aab511cb8a8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085241Z&X-Amz-Expires=300&X-Amz-Signature=82f4a19fb8dee3f4b45e44e68d3a51fb38b0f8f5d69e84cedeee4cd362089c67&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=764059033)
 
  - Mã giả phép nhân trên đường cong Elliptic
 ```sage!
@@ -124,8 +124,7 @@ Output: một nhân tử không tầm thường (khác 1 và n) của n, hoặc 
   4. Else, return d.
 ```
 #### Pohlig-Hellman
- - Cho P, Q là các phần tử trong nhóm hữu hạn G bậc N. Ta muốn tìm một số nguyên k với $kP = Q$. Giả sử biết phân tích ra thừa số nguyên tố của $N$ là:![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/d35f3330-5417-4e48-9c40-b5dd761b1f7a)
-
+ - Cho P, Q là các phần tử trong nhóm hữu hạn G bậc N. Ta muốn tìm một số nguyên k với $kP = Q$. Giả sử biết phân tích ra thừa số nguyên tố của $N$ là: $N = \prod_i n_i^{e_i}$
  - Phương pháp Pohlig - Hellman thực hiện tốt nhất nếu tất cả các ước nguyên tố của N là nhỏ. Nếu ước nguyên tố lớn nhất xấp xỉ lớn của N thì phương pháp khó áp dụng. Vì lý do này các hệ mật dựa trên logarit rời rạc thường chọn bậc của nhóm có chứa một thừa số nguyên tố lớn
  - Pohlig-Hellman - rút gọn các phép tính logarit rời rạc về các nhóm con nguyên tố cấp P và sử dụng Định lý số dư Trung Hoa để giải hệ đồng dư cho logarit rời rạc cấp toàn phần
  - Thuật toán Pohlig-Hellman hoạt động như sau:
@@ -301,7 +300,7 @@ def movAttack(G, Q):
 ### Chữ ký số ECDSA
  - ECDSA là viết tắt của Elliptic Curve Digital Signature Algorithm - thuật toán sinh chữ ký số dựa trên đường cong Elliptic
  - ECDSA được sử dụng để tạo chữ kí số cho dữ liệu, giúp chống lại sự giả mạo cũng như làm sai lệch dữ liệu, cung cấp một phương pháp xác thực mà không ảnh hưởng đến tính bảo mật của dữ liệu gốc
- - ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/f730cb51-cd10-49e8-b354-525edc1f2685)
+ - ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/308166596-f730cb51-cd10-49e8-b354-525edc1f2685.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085509Z&X-Amz-Expires=300&X-Amz-Signature=a3885875ff6a553370d8fba4da8df79a83b7b877e6cc76a81f29fd61efe544e6&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=764059033)
 
 #### Tạo public key
  - Trên đường cong elliptic ta chọn một điểm **G**(generator point)
@@ -326,6 +325,6 @@ với $d_A$ là private key là một số ngẫu nhiên.
  - Alice và Bob đồng ý sử dụng một đường cong elip cụ thể E(Fp) và 1 điểm P ∈ E(Fp). Alice chọn số nguyên bí mật nA và Bob chọn số bí mật số nguyên nB . Họ tính toán các bội số liên quan $$Q_A = n_A P$$ $$Q_B = n_B P$$
  - Sau đó, Alice sử dụng hệ số nhân bí mật của mình để tính $n_AQ_B$ và Bob tính toán $n_BQ_A$ theo cách tương tự
  - Giá trị bí mật được chia sẻ là $$n_AQ_B = n_A(n_BP) = n_B(n_AP) = n_BQ_A$$
- - ![image](https://github.com/luongdv35/Elliptic-Curves-in-Cryptography/assets/127461439/5821f777-055d-4554-9ec0-2e01ab387db9)
+ - ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/308166796-5821f777-055d-4554-9ec0-2e01ab387db9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085522Z&X-Amz-Expires=300&X-Amz-Signature=615b2a6ec52ff4562f7f940637476486f89890a10f8e3dcf3d2e799d6697d9d6&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=764059033)
  - Dễ thấy hai bên tính khóa bí mật dùng chung là bằng nhau. Alice và Bob chỉ công bố thông tin duy nhất là khóa công khai vì vậy không ai ngoại trừ bản thân họ có thể xác định được khóa riêng của mình trừ khi giải được ECDLP
  - Một số phương pháp tấn công đã biết trên ECDH như: Tấn công vào ECDLP hoặc ECDHP; Tấn công vào quá trình tạo khóa; Tấn công Man-in-the-middle; Tấn công vào hàm dẫn xuất khóa; Các tấn công dựa trên việc sử dụng các tham số miền không hợp lệ; Tấn công dựa trên việc sử dụng khóa công khai không hợp lệ. Ngoài ra cũng có thể xảy ra các tấn công phi mã hóa trên ECDH ví dụ “các tấn công thực thi” như tấn công dựa trên lỗi (fault-based attacks), tấn công phân tích công suất (power-analysis attacks) và tấn công phân tích thời gian (timing-analysis attacks)

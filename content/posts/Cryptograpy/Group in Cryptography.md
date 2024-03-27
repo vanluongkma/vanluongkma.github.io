@@ -57,7 +57,7 @@ tags: [
 # Diffie-Hellman
  - Để giải quyết các bài trong phần này, mình sẽ giải thích tóm tắt về trao đổi khóa Diffie-Hellman.
  - Các bạn có thể đọc [Diffie-Hellman](https://vi.wikipedia.org/wiki/Trao_%C4%91%E1%BB%95i_kh%C3%B3a_Diffie-Hellman) hoặc xem [ATTT-Diffie-Hellman](https://youtu.be/D08EMFzGSfA?si=CYO8rGf6Egup6g-z) để hiểu rõ và lấy cảm hứng để giải những challenges trong phần này.
-![image](https://github.com/luongdv35/Group_in_Cryptography/assets/127461439/a2b90d7c-66e1-4aef-b2bc-1c96062568d4)
+![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/307801933-a2b90d7c-66e1-4aef-b2bc-1c96062568d4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T085600Z&X-Amz-Expires=300&X-Amz-Signature=dce33ec51df2ecd09dc47b7c7a3ca5ba3cca4f4bc9b49a7c03dbc9c5eee2197c&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=763523386)
  - $Alice$ và $Bob$ thỏa thuận sử dụng chung một nhóm cyclic hữu hạn $G$ và một phần tử sinh $g$ của $G$. Phần tử sinh $g$ công khai với tất cả mọi người, kể cả kẻ tấn công. Giả sử nhóm $G$ là nhóm nhân.
      - Đầu tiên $Alice$ chọn ngẫu nhiên một số tự nhiên $a$ và gửi $g^a \ mod \ p$ cho $Bob$
      - Tiếp đó $Bob$ chọn ngẫu nhiên một số tự nhiên $b$ và gửi $g^b \ mod \ p$ cho $Alice$

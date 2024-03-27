@@ -686,7 +686,6 @@ print(f.recvline())
 ```
 > FLAG : crypto{m4ll34b1l17y_c4n_b3_d4n63r0u5}
 ### 25.Let's Decrypt
- - ![image](https://github.com/luongdv35/luongdv35.github.io/assets/127461439/e2401efb-4ad4-4018-93b5-3798b05c012a)
 
  - Source: [13391.py](https://cryptohack.org/static/challenges/13391_410b65ffd09d75b4c9fc4fe11bfdec46.py)
  - Với bài này tôi chỉ cần để ý tới chỗ này

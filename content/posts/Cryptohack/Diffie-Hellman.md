@@ -594,7 +594,7 @@ if __name__ == '__main__':
 # encrypted_flag: 'f60522a95bde87a9ff00dc2c3d99177019f625f3364188c1058183004506bf96541cf241dad1c0e92535564e537322d7'
 ```
  - Với bài này ta chỉ cần để ý 2 hàm 
- ![image](https://github.com/luongdv35/Group_in_Cryptography/assets/127461439/94be09da-5cca-4e74-8f63-650569a933fa)
+ ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/307807531-94be09da-5cca-4e74-8f63-650569a933fa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T084629Z&X-Amz-Expires=300&X-Amz-Signature=d3bbd49bb5e9814aabb39dcc738451496448476d9700ea9e5389a6e79f3560b6&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=763523386)
  - Chú ý kia là phép xor nên bài này trở nên dễ dàng với phép tính $$a = A \ xor \ g \ mod \ p$$ $$secret = B \ xor \ a \ mod \ p$$.
  - Solution bằng python của mình:
 ```python3

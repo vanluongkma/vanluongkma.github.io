@@ -184,17 +184,16 @@ print(long_to_bytes(m))
 ```
 ### 5.Wiener Attack
 - Để giảm thời gian giải mã (hoặc thời gian tạo chữ ký), người ta có thể muốn sử dụng một giá trị nhỏ của d hơn là một d ngẫu nhiên. Do lũy thừa mô-đun cần có thời gian tuyến tính trong log2 d, nên một d nhỏ có thể cải thiện hiệu suất ít nhất là hệ số 10 (đối với mô-đun 1024 bit). Thật không may, một cuộc tấn công thông minh của M. Wiener [19] cho thấy rằng một d nhỏ dẫn đến sự phá vỡ hoàn toàn hệ thống mật mã.
-- Đặt $N= p * q$ với $q < p < 2q$ . Đặt $d < \frac{1}{3}N^{\frac{1}{4}}. Cho trước (N,e) với $ed = 1 mod phi(N)$ , Marvin có thể phục hồi d một cách hiệu quả.
-- Bằng chứng dựa trên các xấp xỉ sử dụng các phân số liên tục. Vì $ed = 1 mod phi(N)$, nên tồn tại k sao cho $ed − kphi(N) = 1$. Do đó, ![image](https://github.com/vanluongkma/RSA_RSA_ATTACK_AND_RSA_CRYPTOHACK/assets/127461439/046e2b22-27a0-4db2-8549-ffced49a0d3c)
-- Do đó, $\frac{k}{d}$ là một xấp xỉ của $\frac{e}{phi(N)}$. Mặc dù Marvin không biết phi(N), anh ấy có thể sử dụng N để tính gần đúng nó. Thật vậy, vì $phi(N) = N − p − q + 1$ và $p + q − 1 < 3 \sqrt{N}$ , nên chúng ta có $|N − phi(N)| < 3 \sqrt{N}$ . Sử dụng N thay cho phi(N), chúng tôi thu được: ![image](https://github.com/vanluongkma/RSA_RSA_ATTACK_AND_RSA_CRYPTOHACK/assets/127461439/33a41fe7-1918-4cc7-8330-9fa2fa9b8557)
+- Đặt $N= p * q$ với $q < p < 2q$ . Đặt $d < \frac{1}{3}N^{\frac{1}{4}}$. Cho trước (N,e) với $ed = 1 mod phi(N)$ , Marvin có thể phục hồi d một cách hiệu quả.
+- Bằng chứng dựa trên các xấp xỉ sử dụng các phân số liên tục. Vì $ed = 1 mod phi(N)$, nên tồn tại k sao cho $ed − kphi(N) = 1$. Do đó, $\mid \frac{e}{phi(N)} - \frac{k}{d} \mid = \frac{1}{d.phi(N)}$
+- Do đó, $\frac{k}{d}$ là một xấp xỉ của $\frac{e}{phi(N)}$. Mặc dù Marvin không biết phi(N), anh ấy có thể sử dụng N để tính gần đúng nó. Thật vậy, vì $phi(N) = N − p − q + 1$ và $p + q − 1 < 3 \sqrt{N}$ , nên chúng ta có $|N − phi(N)| < 3 \sqrt{N}$ . Sử dụng N thay cho phi(N), chúng tôi thu được: ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312969391-33a41fe7-1918-4cc7-8330-9fa2fa9b8557.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T090252Z&X-Amz-Expires=300&X-Amz-Signature=6a8d5954553977039712d0651c28116ad3475ca0f3be0a268f2d1490db977979&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699668079)
 
 
-- Bây giờ, $k * phi(N) = ed − 1 < ed$ . Vì $e < phi(N)$ , chúng ta thấy rằng $k < d < \frac{1}{3}N^{\frac{1}{4}}$ . Do đó chúng tôi có được: ![image](https://github.com/vanluongkma/RSA_RSA_ATTACK_AND_RSA_CRYPTOHACK/assets/127461439/3a16e941-6d45-490a-89e5-caf59c02a1dc)
+- Bây giờ, $k * phi(N) = ed − 1 < ed$ . Vì $e < phi(N)$ , chúng ta thấy rằng $k < d < \frac{1}{3}N^{\frac{1}{4}}$ . Do đó chúng tôi có được: ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/127461439/312969617-3a16e941-6d45-490a-89e5-caf59c02a1dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240327T090546Z&X-Amz-Expires=300&X-Amz-Signature=cc68eb63c783e1c0da76f1fb088920ae829ae7a9c6e2b59e52568c820c3aa69c&X-Amz-SignedHeaders=host&actor_id=127461439&key_id=0&repo_id=699668079)
 
 
 - Cuối cùng có được
-![image](https://github.com/vanluongkma/RSA_RSA_ATTACK_AND_RSA_CRYPTOHACK/assets/127461439/cf622d3e-11e8-444d-b470-d056d7f2206f)
-
+$\mid \frac{e}{n} - \frac{k}{d} \mid < \frac{1}{2d^2}$
 
 
 - Đây là một quan hệ xấp xỉ cổ điển. Các số lượng phân số $\frac{k}{d}$ với d < N gần đúng với $\frac{e}{N}$ bị giới hạn bởi $log_2N$. Thực tế, tất cả các phân số như vậy thu được dưới dạng các phần tử hội tụ của khai triển phân số liên tục của $\frac{e}{N}$ . Tất cả người ta phải làm là tính log N hội tụ của phân số tiếp tục cho $\frac{e}{N}$. Một trong số này sẽ bằng $\frac{k}{d}$. Vì $ed − kphi(N) = 1$, nên ta có $gcd(k, d) = 1$, và do đó $\frac{k}{d}$ là phân số rút gọn. Đây là một thuật toán thời gian tuyến tính để khôi phục khóa bí mật d.
@@ -293,7 +292,9 @@ print(long_to_bytes(m))
 ### 8. Multi-prime RSA
  - Với n thông thường chúng ta thường factor ra 2 số nguyên tố nhưng ở trường hợp sau thì n factor ra nhiều số nguyên tố.
 
-![image](https://github.com/vanluongkma/RSA_RSA_ATTACK_AND_RSA_CRYPTOHACK/assets/127461439/5f31b687-e569-40cf-bd4f-b8cd5538272a)
+$n = \prod_{i=1}^k p_i$
+
+$phi(n) = \prod_{i=1}^k (p_i - 1)$
 
  
  - Ở challenge ``Manyprime`` bên dưới thì chúng ta sẽ áp dụng cách tấn công này.
@@ -321,7 +322,7 @@ True
  -  Ở đây ``Boneh Durfee`` sẽ tấn công với điều kiện private key lớn hơn: $$d < N ^ {0.292}$$
  -  Chúng ta sử dụng tấn công Boneh Durfee để tìm lại d. 
 
- ![image](https://github.com/vanluongkma/RSA_RSA_ATTACK_AND_RSA_CRYPTOHACK/assets/127461439/55e001a0-b321-4543-8e28-8ec4ca86df71)
+${E, n} \xrightarrow[d < N^{0.292}]{P} d$
 
 
 ```
@@ -412,8 +413,8 @@ if __name__ == '__main__':
 ```
 ### 10. Bleichenbacher’s Attack
  
-![image](https://github.com/vanluongkma/RSA_RSA_ATTACK_AND_RSA_CRYPTOHACK/assets/127461439/35c50063-1639-44de-9c01-e095bc2598e2)
-
+|00|02|Padding|00|Data block|
+|:--|:--|:--|:--|:--|
  - Cuộc tấn công này có thể áp dụng khi trao đổi khóa diễn ra bằng thuật toán RSA và phần đệm được sử dụng là PKCS # 1 v1.5.
  - Cách thức hoạt động của Attack:
      - Lưu ý rằng trong quá trình thiết lập phiên TLS với trao đổi khóa RSA, máy khách chọn một số 48 bit ngẫu nhiên (2 byte phiên bản giao thức và 46 byte ngẫu nhiên), pad theo sơ đồ mã hóa PKCS để tạo cùng thứ tự modulo n. Toàn bộ sự việc sau đó được nâng lên số mũ công khai e modulo n. Về phía người nhận, sau khi giải mã, dữ liệu được xác minh để căn chỉnh đúng nếu không gói sẽ bị loại bỏ. Sau khi giải mã, người nhận kiểm tra xem dữ liệu văn bản thuần túy có bắt đầu bằng ``0x00 02 ``, nếu không nó bị loại bỏ, thì tất cả các byte sẽ bị bỏ qua cho đến khi tìm thấy 0x00.
@@ -443,7 +444,9 @@ $$2B < m * s (modN) < 3B$$
     $$m  *  m^{(p-1)^k}(modP) = m  *  1^k(modP) = m (modP) $$
     $$m^{e * d_p} ≡ m(modP) \ hay \ m - m^{e * d_p} = k * p$$
  - Và cuối cùng:
-    $$GCD(m-m^{e  *  d_p}, n) = GCD(k  * p, p *  q) = p $$ với ``m < n ``
+
+    $$GCD(m - m^{e .d_p}, n) = GCD(k.p, p . q) = p$$ 
+    với ``m < n ``
  - Code minh họa:
 ```sage
 sage: from Crypto.Util.number import isPrime, GCD
@@ -466,9 +469,14 @@ sage: from Crypto.Util.number import isPrime, GCD
 True
 ```
 ## Reference
-  - https://bitsdeep.com/posts/attacking-rsa-for-fun-and-ctf-points-part-1/ (part-2, part-3, part-4)
-  - https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf
-  - https://en.wikipedia.org/wiki/RSA_(cryptosystem)
-  - https://en.wikipedia.org/wiki/Chinese_remainder_theorem#:~:text=In%20mathematics%2C%20the%20Chinese%20remainder,are%20pairwise%20coprime%20(no%20two)
-  - https://github.com/defund/coppersmith/tree/master
-  - https://cr.yp.to/bib/2001/coppersmith.pdf
+[1] https://bitsdeep.com/posts/attacking-rsa-for-fun-and-ctf-points-part-1/ (part-2, part-3, part-4)
+
+[2] https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf
+
+[3] https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+
+[4] https://en.wikipedia.org/wiki/Chinese_remainder_theorem#:~:text=In%20mathematics%2C%20the%20Chinese%20remainder,are%20pairwise%20coprime%20(no%20two)
+
+[5] https://github.com/defund/coppersmith/tree/master
+
+[6] https://cr.yp.to/bib/2001/coppersmith.pdf
