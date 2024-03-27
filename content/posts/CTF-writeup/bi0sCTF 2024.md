@@ -1,11 +1,10 @@
 ---
 author: "vanluongkma"
-title: "bi0s CTF 2024"
+title: "bi0sCTF 2024"
 date: "2024-02-26"
-tags: [
-"CTF-Writeup",
-]
+tags: ["CTF-Writeup"]
 ---
+
 ## lalala
 ```python3
 from random import randint
