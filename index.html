@@ -1,0 +1,240 @@
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="VanLuong">
+    <link rel="icon" href="https://marketplace.canva.com/MAB48Xu3f-I/1/thumbnail/canva-heart-icon-MAB48Xu3f-I.png" sizes="17x17">
+    <meta name="keywords" content="VanLuong" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VanLuong</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/component.css" />
+    <style>
+      .click-here {
+        color: #ff4d88;
+        font-weight: bold;
+        font-size: 1.5em;
+        transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+        text-decoration: none;
+        position: relative;
+    }
+    
+    .click-here:hover {
+        color: #fcfcfc;
+        transform: scale(1.5);
+        text-shadow: 
+            0 0 10px rgb(0, 0, 0), 
+            0 0 20px rgba(255, 99, 71, 0.6),
+            0 0 25px rgb(255, 255, 255);
+    }
+    
+    .click-here:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #ff0000;
+        bottom: 0;
+        left: 0;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+    
+    .click-here:hover:before {
+        transform: scaleX(1);
+    }
+        body {
+            perspective: 1000px;
+        }
+
+        .book-title {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 4em;
+            font-family: Tahoma;
+            background: url('src/chopnhay.gif') repeat scroll 0% 2% transparent;
+            color: #FA3939;
+            text-shadow: 0 0 0.7em #FA3939, 0 0 0.5em #FA3939;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        #main {
+            position: absolute;
+            top: 0px;
+            left: 20px;
+            color: rgb(199, 84, 84);
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #fff;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+    </style>
+    <script language="javascript">
+        title_tmp1 = document.title
+        if (title_tmp1.indexOf(">>") != -1) {
+            title_tmp2 = title_tmp1.split(">>");
+            title_last = "*~*" + title_tmp2[1];
+            title_last = title_last + "*~*" + title_tmp2[2];
+        } else {
+            if (title_tmp1.indexOf("*~*") != -1) {
+                title_tmp2 = title_tmp1.split("*~*");
+                title_last = "*~*" + title_tmp2[1];
+                if (title_last == "*~*") {
+                    title_last = "*~*"
+                };
+                if (title_last == "*~*") {
+                    title_last = "*~*"
+                };
+            } else {
+                title_last = "Book of VanLuong"
+            }
+        }
+        title_new = "" + title_last + ""
+        step = 0
+
+        function flash_title() {
+            step++
+            if (step == 8) {
+                step = 1
+            }
+            if (step == 1) {
+                document.title = '|----♥' + title_new + '♥----|'
+            }
+            if (step == 2) {
+                document.title = '|---♥-' + title_new + '-♥---|'
+            }
+            if (step == 3) {
+                document.title = '|--♥--' + title_new + '--♥--|'
+            }
+            if (step == 4) {
+                document.title = '|-♥---' + title_new + '---♥-|'
+            }
+            if (step == 5) {
+                document.title = '|♥----' + title_new + '----♥|'
+            }
+            if (step == 6) {
+                document.title = '|-♥---' + title_new + '---♥-|'
+            }
+            if (step == 7) {
+                document.title = '|--♥--' + title_new + '--♥--|'
+            }
+            if (step == 8) {
+                document.title = '|---♥-' + title_new + '-♥---|'
+            }
+            if (step == 9) {
+                document.title = '|----♥' + title_new + '♥----|'
+            }
+            setTimeout("flash_title()", 180);
+        }
+        flash_title()
+    </script>
+</head>
+<body>
+    <div class="container demo-1">
+        <div class="content">
+            <div id="large-header" class="large-header">
+                <div style="position:absolute;left: 520px; top:505px;" class="time" id="time" data-hours data-minutes>
+                    <div class="digit">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="digit">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="digit">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="digit">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="digit">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="digit">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+                <canvas id="demo-canvas"></canvas>
+                <section id="main">
+                    <header>
+                        <span class="avatar"><img src="images/avatar.jpg" alt /></span>
+                        <h1>
+                            <font size="7" style="background: url(&quot;src/chopnhay.gif&quot;) 
+                                repeat scroll 0% 0% transparent; color:rgb(255, 255, 255);text-shadow: 0 0 0.2em #241D1B,0 0 0.2em #241D1B">Book of VanLuong</font>
+                        </h1>
+                        <p>
+                          <a href="https://vanluong.gitbook.io/book-of-vanluong" target="_blank" class="click-here">Click Here</a>
+                        </p>
+                    </header>
+                    <footer>
+                    </footer>
+                </section>
+            </div>
+        </div>
+        <footer>
+          <a href="https://www.facebook.com/vanluong.504" target="_blank" style="color: #ffffff;">© 2024 VanLuong</a>
+      </footer>
+    </div>
+    <script src="js/TweenLite.min.js"></script>
+    <script src="js/EasePack.min.js"></script>
+    <script src="js/rAF.js"></script>
+    <script src="js/demo-1.js"></script>
+    <script src="js/Rx.min.js"></script>
+    <script src="js/rxcss.min.js"></script>
+    <script src="js/index.js"></script>
+    <iframe src="https://www.nhaccuatui.com/mh/background/HIWX4ZCwxIbM" width="1" height="1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+</body>
+</html>
